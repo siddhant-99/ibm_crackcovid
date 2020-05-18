@@ -1,0 +1,26 @@
+{
+  "name": "ibm_crackcovid",
+  "version": "1.0.0",
+  "description": "IBM Crack the COVID Hackathon",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "ibmcloud-appid": "^6.1.0",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddhant-99/ibm_crackcovid.git"
+  },
+  "author": "Team Regression",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siddhant-99/ibm_crackcovid/issues"
+  },
+  "homepage": "https://github.com/siddhant-99/ibm_crackcovid#readme"
+}
