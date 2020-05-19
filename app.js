@@ -24,17 +24,48 @@ passport.use(new WebAppStrategy({
     redirectUri: "http://localhost:3000/appid/callback"
 }));
 
+// Handle Login
+app.get('/appid/login', passport.authenticate(WebAppStrategy.STRATEGY_NAME, {
+	successRedirect: '/dataentry.html',
+	forceLogin: true
+}));
+
+// Handle callback
 app.get('/appid/callback', passport.authenticate(WebAppStrategy.STRATEGY_NAME));
 
+// Handle logout
 app.get('/appid/logout', function(req, res){
-    WebAppStrategy.logout(req);
-    res.redirect('/');
+	WebAppStrategy.logout(req);
+	res.redirect('/');
 });
 
-app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME));
+// Protect the whole app
+// app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME));
 
+// Make sure only requests from an authenticated browser session can reach /api
+app.use('/api', (req, res, next) => {
+	if (req.user){
+		next();
+	} else {
+		res.status(401).send("Unauthorized");
+	}
+});
+
+// The /api/user API used to retrieve name of a currently logged in user
+app.get('/api/user', (req, res) => {
+	// console.log(req.session[WebAppStrategy.AUTH_CONTEXT]);
+	res.json({
+		user: {
+			name: req.user.name
+		}
+	});
+});
+
+// Serve static resources
 app.use(express.static('./public'));
+app.use(express.static('./docs'));
 
-app.listen(3000,()=> {
+// Start server
+app.listen(3000, () => {
     console.log('Listening on http://localhost:3000');
 });
