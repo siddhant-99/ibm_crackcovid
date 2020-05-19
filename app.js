@@ -8,7 +8,7 @@ const app = express();
 app.use(session({
     secret: '123456',
     resave: true,
-    saveUninitialised: true
+    saveUninitialized: true
 }));
 
 app.use(passport.initialize());
