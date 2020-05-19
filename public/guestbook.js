@@ -60,8 +60,14 @@ const guestbook = {
   $(document).on('submit', '#addEntry', function(e) {
     e.preventDefault();
 
-    var test_y = document.getElementById("test_y");
-    var test_n = document.getElementById("test_n");
+    var authorized = document.getElementById("user");
+
+    if(authorized.textContent == "Unauthorised"){
+      alert('Unauthorized Access!! Please Login to enter details.');
+    }
+    else {
+      var test_y = document.getElementById("test_y");
+      var test_n = document.getElementById("test_n");
 
     if(test_y.checked == true){
       guestbook.add(
@@ -91,6 +97,8 @@ const guestbook = {
         console.log(error);
       });
     }
+    }
+    
   });
 
   $(document).ready(function() {
