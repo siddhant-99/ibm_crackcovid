@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Guestbook - a serverless web application</title>
+  <title>Hospital Dashboard</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
 </head>
@@ -14,17 +14,23 @@
   <section class="section">
     <div class="container">
       <h1 class="title is-1">
-        Guestbook
+        Hospital Dashboard
       </h1>
       <p class="subtitle">
-        A serverless web application
+        Kindly fill in your hospital/lab center details.
+
+        In case of queries, email us at:- f20170074@pilani.bits-pilani.ac.in. 
+
+
       </p>
 
-      <a href="/appid/logout" id="logout" style="display: none;">Logout</a>
+      <a href="/appid/login" id="login" style="display: none;" style="text-align: right;">Login</a>
+      <a href="/appid/logout" id="logout" style="display: none;" style="text-align: right;">Logout</a>
 
       <h3 id="user"></h3>
   
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
       <script>
           $().ready(() => {
               $.get("/api/user")
@@ -32,42 +38,71 @@
                       $("#user").text("Hello " + resp.user.name);
                       $("#logout").show();
                       $("#login").hide();
+                  },
+                  ()=>{
+                      $("#user").text("Unauthorised");
+                      $("#logout").hide();
+                      $("#login").show();
                   });
           });
       </script>
+
       
       <div class="columns">
         <div class="column">
           <h3 class="title is-3">
-            Messages from past visitors
+            Current Hospitals Onboard
           </h3>
           <div id="entries"></div>
         </div>
         <div class="column">
           <h3 class="title is-3">
-            Add your message
+            Kindly fill in the form
           </h3>
           <form id="addEntry">
             <div class="field">
-              <label class="label">Name</label>
+              <label class="label">Name of the Hospital</label>
               <div class="control">
-                <input class="input" type="text" placeholder="your name" id="name">
+                <input class="input" type="text" placeholder="hospital name" id="hname">
               </div>
             </div>
             <div class="field">
-              <label class="label">Email</label>
+              <label class="label"> Hospital Email</label>
               <div class="control">
-                <input class="input" type="text" placeholder="your email" id="email">
+                <input class="input" type="text" placeholder="hospital email" id="hemail">
               </div>
             </div>
             <div class="field">
-              <label class="label">Comment</label>
+              <label class="label"> No. of beds available</label>
               <div class="control">
-                <textarea class="textarea" placeholder="your comment" id="comment"></textarea>
+                <input class="input" type="number" placeholder="beds" id="nbeds">
               </div>
             </div>
             <div class="control">
-              <button class="button is-primary">Send your message</button>
+              <label class="label"> Testing Facility Available</label>
+              <label class="radio">
+                <input type="radio" name="testing" id="test_y" value="Yes" checked>
+                Yes
+              </label>
+              <label class="radio">
+                <input type="radio" name="testing" id="test_n" value="No">
+                No
+              </label>
+            </div>
+            <div class="field">
+              <label class="label">Address</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Hospital Adderss" id="haddress"></textarea>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Enter POC Details</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Point of Contact" id="poc"></textarea>
+              </div>
+            </div>
+            <div class="control">
+              <button class="button is-primary">Submit Details</button>
             </div>
           </form>
         </div>
@@ -87,8 +122,8 @@
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{name}}</strong> <small>{{email}}</small>
-              <br> {{comment}}
+              <strong>{{hname}}</strong> <small>{{hemail}}</small>
+              <br> {{haddress}}
             </p>
           </div>
         </div>

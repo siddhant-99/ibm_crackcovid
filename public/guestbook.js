@@ -9,16 +9,19 @@ const guestbook = {
     });
   },
   // add a single guestbood entry
-  add(name, email, comment) {
-    console.log('Sending', name, email, comment)
+  add(hname, hemail, nbeds, testing, haddress, poc) {
+    console.log('Sending Details')
     return $.ajax({
       type: 'PUT',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
-        name,
-        email,
-        comment,
+        hname,
+        hemail,
+        nbeds,
+        testing,
+        haddress,
+        poc,
       }),
       dataType: 'json',
     });
@@ -57,16 +60,37 @@ const guestbook = {
   $(document).on('submit', '#addEntry', function(e) {
     e.preventDefault();
 
-    guestbook.add(
-      $('#name').val().trim(),
-      $('#email').val().trim(),
-      $('#comment').val().trim()
-    ).done(function(result) {
-      // reload entries
-      loadEntries();
-    }).error(function(error) {
-      console.log(error);
-    });
+    var test_y = document.getElementById("test_y");
+    var test_n = document.getElementById("test_n");
+
+    if(test_y.checked == true){
+      guestbook.add(
+        $('#hname').val().trim(),
+        $('#hemail').val().trim(),
+        $('#nbeds').val().trim(),
+        $('#test_y').val().trim(),
+        $('#haddress').val().trim(),
+        $('#poc').val().trim(),
+      ).done(function(error) {
+        loadEntries();
+      }).error(function(error){
+        console.log(error);
+      });
+    }
+    else if(test_n.checked == true){
+      guestbook.add(
+        $('#hname').val().trim(),
+        $('#hemail').val().trim(),
+        $('#nbeds').val().trim(),
+        $('#test_n').val().trim(),
+        $('#haddress').val().trim(),
+        $('#poc').val().trim(),
+      ).done(function(error) {
+        loadEntries();
+      }).error(function(error){
+        console.log(error);
+      });
+    }
   });
 
   $(document).ready(function() {
