@@ -9,13 +9,14 @@ const guestbook = {
     });
   },
   // add a single guestbood entry
-  add(hname, hemail, nbeds, testing, haddress, poc) {
+  add(sno, hname, hemail, nbeds, testing, haddress, poc) {
     console.log('Sending Details')
     return $.ajax({
       type: 'PUT',
       url: `${apiUrl}/entries`,
       contentType: 'application/json; charset=utf-8',
       data: JSON.stringify({
+        sno,
         hname,
         hemail,
         nbeds,
@@ -27,6 +28,8 @@ const guestbook = {
     });
   }
 };
+
+var no_docs;
 
 (function() {
 
@@ -49,6 +52,8 @@ const guestbook = {
         entries: result.entries
       }
       console.log(context)
+      no_docs = context.entries.length
+      console.log(no_docs)
       $('#entries').html(entriesTemplate(context));
     }).error(function(error) {
       $('#entries').html('No entries');
@@ -72,6 +77,7 @@ const guestbook = {
 
     if(test_y.checked == true){
       guestbook.add(
+        no_docs+1,
         $('#hname').val().trim(),
         $('#hemail').val().trim(),
         $('#nbeds').val().trim(),
