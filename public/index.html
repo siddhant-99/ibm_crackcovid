@@ -3,6 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+      #map {
+        height: 80%;
+      }
+    </style>
     <title>Crack the COVID</title>
     <link
       rel="stylesheet"
@@ -58,8 +65,62 @@
         </div>
       </div>
     </nav>
+    <div class="columns">
+      <div class="column">
+        <div id="entries"></div>
+      </div>
+      <div class="column">
+        <div id="map"></div>
+        <script>
+          // Note: This example requires that you consent to location sharing when
+          // prompted by your browser. If you see the error "The Geolocation service
+          // failed.", it means you probably did not give permission for the browser to
+          // locate you.
+          var marker, map, infoWindow;
+          function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+              center: { lat: -34.397, lng: 150.644 },
+              zoom: 6,
+            });
+            infoWindow = new google.maps.InfoWindow();
 
-    <div id="entries"></div>
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                function (position) {
+                  var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                  };
+
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent("Your Location");
+                  infoWindow.open(map);
+                  map.setCenter(pos);
+                  marker = new google.maps.Marker({position: pos, map: map});
+                },
+                function () {
+                  handleLocationError(true, infoWindow, map.getCenter());
+                }
+              );
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+          }
+
+          function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(
+              browserHasGeolocation
+                ? "Error: The Geolocation service failed."
+                : "Error: Your browser doesn't support geolocation."
+            );
+            infoWindow.open(map);
+          }
+        </script>
+      </div>
+    </div>
 
     <script id="entries-template" type="text/x-handlebars-template">
       {{#each entries}}
@@ -90,6 +151,11 @@
       {{/each}}
     </script>
 
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBaFr4NE35DZz-DW3K3WUObRAZGB9f3Sc&callback=initMap"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="guestbook.js"></script>
