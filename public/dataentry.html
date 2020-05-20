@@ -1,140 +1,190 @@
-
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hospital Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hospital Dashboard</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
-</head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title is-1">
+          Hospital Dashboard
+        </h1>
+        <p class="subtitle">
+          Kindly fill in your hospital/lab center details. In case of queries,
+          email us at:- f20170074@pilani.bits-pilani.ac.in.
+        </p>
 
-<body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title is-1">
-        Hospital Dashboard
-      </h1>
-      <p class="subtitle">
-        Kindly fill in your hospital/lab center details.
+        <p align="right">
+          <a
+            href="/appid/login"
+            id="login"
+            style="display: none; text-align: right;"
+            >Login</a
+          >
+        </p>
+        <p align="right">
+          <a
+            href="/appid/logout"
+            id="logout"
+            style="display: none; text-align: right;"
+            >Logout</a
+          >
+        </p>
+        <h3 id="user" align="right">Unauthorised</h3>
 
-        In case of queries, email us at:- f20170074@pilani.bits-pilani.ac.in. 
+        <p><br /></p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-
-      </p>
-
-      <a href="/appid/login" id="login" style="display: none;" style="text-align: right;">Login</a>
-      <a href="/appid/logout" id="logout" style="display: none;" style="text-align: right;">Logout</a>
-
-      <h3 id="user"></h3>
-  
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-      <script>
+        <script>
           $().ready(() => {
-              $.get("/api/user")
-                  .then((resp) => {
-                      $("#user").text("Hello " + resp.user.name);
-                      $("#logout").show();
-                      $("#login").hide();
-                  },
-                  ()=>{
-                      $("#user").text("Unauthorised");
-                      $("#logout").hide();
-                      $("#login").show();
-                  });
+            $.get("/api/user").then(
+              (resp) => {
+                $("#user").text("Hello " + resp.user.name);
+                $("#logout").show();
+                $("#login").hide();
+              },
+              () => {
+                $("#user").text("Unauthorised");
+                $("#logout").hide();
+                $("#login").show();
+              }
+            );
           });
-      </script>
+        </script>
 
-      
-      <div class="columns">
-        <div class="column">
-          <h3 class="title is-3">
-            Current Hospitals Onboard
-          </h3>
-          <div id="entries"></div>
-        </div>
-        <div class="column">
-          <h3 class="title is-3">
-            Kindly fill in the form
-          </h3>
-          <form id="addEntry">
-            <div class="field">
-              <label class="label">Name of the Hospital</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="hospital name" id="hname">
+        <div class="columns">
+          <div class="column">
+            <h3 class="title is-3">
+              Current Hospitals Onboard
+            </h3>
+            <div id="entries"></div>
+          </div>
+          <div class="column">
+            <h3 class="title is-3">
+              Kindly fill in the form
+            </h3>
+            <form id="addEntry">
+              <div class="field">
+                <label class="label">Name of the Hospital</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="hospital name"
+                    id="hname"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <label class="label"> Hospital Email</label>
-              <div class="control">
-                <input class="input" type="text" placeholder="hospital email" id="hemail">
+              <div class="field">
+                <label class="label"> Hospital Email</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="hospital email"
+                    id="hemail"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <label class="label"> No. of beds available</label>
-              <div class="control">
-                <input class="input" type="number" placeholder="beds" id="nbeds">
+              <div class="field">
+                <label class="label"> No. of beds available</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="number"
+                    placeholder="beds"
+                    id="nbeds"
+                  />
+                </div>
               </div>
-            </div>
-            <div class="control">
-              <label class="label"> Testing Facility Available</label>
-              <label class="radio">
-                <input type="radio" name="testing" id="test_y" value="Yes" checked>
-                Yes
-              </label>
-              <label class="radio">
-                <input type="radio" name="testing" id="test_n" value="No">
-                No
-              </label>
-            </div>
-            <div class="field">
-              <label class="label">Address</label>
               <div class="control">
-                <textarea class="textarea" placeholder="Hospital Adderss" id="haddress"></textarea>
+                <label class="label"> Testing Facility Available</label>
+                <label class="radio">
+                  <input
+                    type="radio"
+                    name="testing"
+                    id="test_y"
+                    value="Yes"
+                    checked
+                  />
+                  Yes
+                </label>
+                <label class="radio">
+                  <input type="radio" name="testing" id="test_n" value="No" />
+                  No
+                </label>
               </div>
-            </div>
-            <div class="field">
-              <label class="label">Enter POC Details</label>
+              <div class="field">
+                <label class="label">Address</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    placeholder="Hospital Adderss"
+                    id="haddress"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Enter POC Details</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    placeholder="Point of Contact"
+                    id="poc"
+                  ></textarea>
+                </div>
+              </div>
               <div class="control">
-                <textarea class="textarea" placeholder="Point of Contact" id="poc"></textarea>
+                <button class="button is-primary">Submit Details</button>
               </div>
-            </div>
-            <div class="control">
-              <button class="button is-primary">Submit Details</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script id="entries-template" type="text/x-handlebars-template">
-    {{#each entries}}
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            <img src="{{icon}}" alt="No Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>{{hname}}</strong> <small>{{hemail}}</small>
-              <br> {{haddress}}
-            </p>
+            </form>
           </div>
         </div>
-      </article>
-    </div>
-    {{/each}}
-  </script>
+      </div>
+    </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="guestbook.js"></script>
-</body>
+    <script id="entries-template" type="text/x-handlebars-template">
+      {{#each entries}}
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="{{icon}}" alt="No Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>
+                    {{hname}}
+                  </strong>
 
+                  <small>
+                    {{hemail}}
+                  </small>
+                  <br />
+                  {{haddress}}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      {{/each}}
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="guestbook.js"></script>
+  </body>
 </html>

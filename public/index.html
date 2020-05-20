@@ -1,17 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crack the COVID</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css"
+    />
+    <style type="text/css"></style>
+  </head>
 
-<head>
-    <title>Simple Node Web App</title>
-</head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <h3 align="center" class="title is-3">Regression - Crack the COVID</h3>
+    <p class="subtitle">
+      <br /><br />Please find information regarding nearby hospitals, bed and
+      test availability. Find the most suitable hospital for you. Also, find
+      which places are following social distancing norms and wearing masks to
+      make your outdoor trip safer.
+    </p>
+    <p align="right">
+      <a href="/appid/login" id="login">Hospital Dashboard Login</a>
+    </p>
+    <p align="right">&nbsp;</p>
+    <p align="right">
+      <a href="/appid/logout" id="logout" style="display: none;">Logout</a>
+    </p>
 
-<body>
-    <h1>Hello from the app!</h1>
+    <nav class="level">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Hospitals Onboard</p>
+          <p class="title">10</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Beds Available</p>
+          <p class="title">230</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Places monitored</p>
+          <p class="title">456</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Safety Score Outside</p>
+          <p class="title">67</p>
+        </div>
+      </div>
+    </nav>
 
-    <a href="/appid/login" id="login">Login</a>
+    <div id="entries"></div>
 
-    <a href="/appid/logout" id="logout" style="display: none;">Logout</a>
+    <script id="entries-template" type="text/x-handlebars-template">
+      {{#each entries}}
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="{{icon}}" alt="No Image" />
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>
+                    {{hname}}
+                  </strong>
 
-</body>
+                  <small>
+                    {{hemail}}
+                  </small>
+                  <br />
+                  {{haddress}}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      {{/each}}
+    </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="guestbook.js"></script>
+
+    <p>&nbsp;</p>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Regression</strong> by
+          <a href="https://github.com/siddhant-99">Siddhant Dangi</a>
+          <a href="https://github.com/siddhant-99">Jivat Neet Kaur</a>
+          <a href="https://github.com/siddhant-99">Honnesh Rohmetra</a>
+          <a href="https://github.com/siddhant-99">Abhishek Agarwal</a>
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>
