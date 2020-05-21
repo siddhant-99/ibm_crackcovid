@@ -58,9 +58,7 @@ var no_of_beds =0;
         no_docs = context.entries.length;
         for(var i=0; i<no_docs; i++){
           no_of_beds = no_of_beds+Number(context.entries[i].nbeds);
-          console.log(no_of_beds);
         }
-        console.log(context)
         $("#entries").html(entriesTemplate(context));
         $("#no_hospitals").html(no_docs);
         $("#no_of_beds").html(no_of_beds);
@@ -104,6 +102,7 @@ var no_of_beds =0;
       } else if (test_n.checked == true) {
         guestbook
           .add(
+            no_docs+1,
             $("#hname").val().trim(),
             $("#hemail").val().trim(),
             $("#nbeds").val().trim(),

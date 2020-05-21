@@ -220,7 +220,7 @@
         geocodeAddress(geocoder, map);
 
         function geocodeAddress(geocoder, resultsMap) {
-          var address = data.haddress;
+          var address = data.hname + ' ' + data.haddress;
           console.log(address);
           geocoder.geocode({ address: address }, function (results, status) {
             if (status === "OK") {
@@ -262,8 +262,6 @@
 
           // Retrieve the start and end locations and create a DirectionsRequest using
           // WALKING directions.
-          console.log(start_pos);
-          console.log(dest_pos);
           directionsService.route(
             {
               origin: start_pos,
