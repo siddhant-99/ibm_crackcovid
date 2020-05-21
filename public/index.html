@@ -9,16 +9,14 @@
       #map {
         height: 400px;
       }
-   
-    p.ex1 {
-      margin-left: 20px;
-      padding-right: 20px;
-    }
-    p.ex2 {
-      padding-right: 20px;
-    }
 
-
+      p.ex1 {
+        margin-left: 20px;
+        padding-right: 20px;
+      }
+      p.ex2 {
+        padding-right: 20px;
+      }
     </style>
     <title>Crack the COVID</title>
     <link
@@ -35,12 +33,16 @@
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <h3 align="center" class="title is-3">Regression - Crack the COVID</h3>
-    <p class="subtitle ex1" align="justify" style="Candara, Calibri, Arial">
-      <br /><br />If you need assistance, find information regarding nearby hospitals, bed capacity and
-      test availability. Find the most suitable hospital for you. If you are a nurse, doctor, health department or state 
-      share information on hospital capacity using <a href="/appid/login" id="login">Hospital Dashboard Login</a>. Also, instead of
-      thinking a thousand times before stepping out, find out the safety score of your destination location. We are keeping a track 
-      of the crowd and if people are practicing social distancing and wearing masks to make your outdoor trip safer.
+    <p class="subtitle ex1" align="justify">
+      <br /><br />If you need assistance, find information regarding nearby
+      hospitals, bed capacity and test availability. Find the most suitable
+      hospital for you. If you are a nurse, doctor, health department or state
+      share information on hospital capacity using
+      <a href="/appid/login" id="login">Hospital Dashboard Login</a>. Also,
+      instead of thinking a thousand times before stepping out, find out the
+      safety score of your destination location. We are keeping a track of the
+      crowd and if people are practicing social distancing and wearing masks to
+      make your outdoor trip safer.
     </p>
     <p align="right" class="ex2">
       <a href="/appid/login" id="login">Hospital Dashboard Login</a>
@@ -54,13 +56,13 @@
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Hospitals Onboard</p>
-          <p class="title">10</p>
+          <p class="title" id="no_hospitals"></p>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Beds Available</p>
-          <p class="title">230</p>
+          <p class="title" id="no_of_beds"></p>
         </div>
       </div>
       <div class="level-item has-text-centered">
@@ -83,11 +85,8 @@
       <div class="column">
         <div id="map"></div>
         <script>
-          // Note: This example requires that you consent to location sharing when
-          // prompted by your browser. If you see the error "The Geolocation service
-          // failed.", it means you probably did not give permission for the browser to
-          // locate you.
-          var marker, map, infoWindow;
+          var marker, map, infoWindow, start_pos, dest_marker;
+
           function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
               center: { lat: -34.397, lng: 150.644 },
@@ -95,20 +94,24 @@
             });
             infoWindow = new google.maps.InfoWindow();
 
-            // Try HTML5 geolocation.
+            dest_marker = new google.maps.Marker();
+
             if (navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(
                 function (position) {
-                  var pos = {
+                  start_pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                   };
 
-                  infoWindow.setPosition(pos);
+                  infoWindow.setPosition(start_pos);
                   infoWindow.setContent("Your Location");
                   infoWindow.open(map);
-                  map.setCenter(pos);
-                  marker = new google.maps.Marker({ position: pos, map: map });
+                  map.setCenter(start_pos);
+                  marker = new google.maps.Marker({
+                    position: start_pos,
+                    map: map,
+                  });
                 },
                 function () {
                   handleLocationError(true, infoWindow, map.getCenter());
@@ -161,7 +164,11 @@
             <div class="media-right">
               <form id="view-details">
                 <div class="control">
-                  <button class="button is-info" onclick="myFunc('{{getThis}}')" type="button">
+                  <button
+                    class="button is-info"
+                    onclick="myFunc('{{getThis}}')"
+                    type="button"
+                  >
                     More Details
                   </button>
                 </div>
@@ -171,8 +178,6 @@
         </div>
       {{/each}}
     </script>
-    
-
 
     <script
       async
@@ -184,14 +189,41 @@
     <script src="guestbook.js"></script>
 
     <script>
-        myFunc = function(obj){
-  obj = obj.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-  console.log(JSON.parse(obj));
-}
+      var dest_pos;
+      myFunc = function (obj) {
+        obj = obj
+          .replace(/\n/g, "\\\\n")
+          .replace(/\r/g, "\\\\r")
+          .replace(/\t/g, "\\\\t");
+        var data = JSON.parse(obj);
 
-Handlebars.registerHelper('getThis', function() {
-  return JSON.stringify(this);
-});
+        var geocoder = new google.maps.Geocoder();
+
+        geocodeAddress(geocoder, map);
+
+        function geocodeAddress(geocoder, resultsMap) {
+          var address = data.haddress;
+          console.log(address);
+          geocoder.geocode({ address: address }, function (results, status) {
+            if (status === "OK") {
+              resultsMap.setCenter(results[0].geometry.location);
+              dest_pos = results[0].geometry.location;
+              dest_marker.setMap(resultsMap);
+              dest_marker.setPosition(dest_pos);
+
+              infoWindow.close(map);
+            } else {
+              alert(
+                "Geocode was not successful for the following reason: " + status
+              );
+            }
+          });
+        }
+      };
+
+      Handlebars.registerHelper("getThis", function () {
+        return JSON.stringify(this);
+      });
     </script>
 
     <p>&nbsp;</p>

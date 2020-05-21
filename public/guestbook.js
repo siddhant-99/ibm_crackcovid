@@ -32,8 +32,6 @@ const guestbook = {
 var no_docs;
 
 
-
-
 (function () {
   let entriesTemplate;
 
@@ -59,6 +57,7 @@ var no_docs;
         };
         no_docs = context.entries.length;
         $("#entries").html(entriesTemplate(context));
+        $("#no_hospitals").html(no_docs);
       })
       .error(function (error) {
         $("#entries").html("No entries");

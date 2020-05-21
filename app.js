@@ -63,7 +63,6 @@ app.get('/api/user', (req, res) => {
 
 // Serve static resources
 app.use(express.static('./public'));
-app.use(express.static('./docs'));
 
 // Start server
 app.listen(3000, () => {
