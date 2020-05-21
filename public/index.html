@@ -7,7 +7,7 @@
       /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
       #map {
-        height: 80%;
+        height: 400px;
       }
     </style>
     <title>Crack the COVID</title>
@@ -97,7 +97,7 @@
                   infoWindow.setContent("Your Location");
                   infoWindow.open(map);
                   map.setCenter(pos);
-                  marker = new google.maps.Marker({position: pos, map: map});
+                  marker = new google.maps.Marker({ position: pos, map: map });
                 },
                 function () {
                   handleLocationError(true, infoWindow, map.getCenter());
@@ -135,6 +135,7 @@
               <div class="content">
                 <p>
                   <strong>
+                    {{sno}}
                     {{hname}}
                   </strong>
 
@@ -145,6 +146,15 @@
                   {{haddress}}
                 </p>
               </div>
+            </div>
+            <div class="media-right">
+              <form id="view-details">
+                <div class="control">
+                  <button class="button is-info" onclick="myFunc('{{getThis}}')" type="button">
+                    More Details
+                  </button>
+                </div>
+              </form>
             </div>
           </article>
         </div>
