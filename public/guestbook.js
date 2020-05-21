@@ -30,7 +30,7 @@ const guestbook = {
 };
 
 var no_docs;
-
+var no_of_beds =0;
 
 (function () {
   let entriesTemplate;
@@ -56,8 +56,14 @@ var no_docs;
           entries: result.entries,
         };
         no_docs = context.entries.length;
+        for(var i=0; i<no_docs; i++){
+          no_of_beds = no_of_beds+Number(context.entries[i].nbeds);
+          console.log(no_of_beds);
+        }
+        console.log(context)
         $("#entries").html(entriesTemplate(context));
         $("#no_hospitals").html(no_docs);
+        $("#no_of_beds").html(no_of_beds);
       })
       .error(function (error) {
         $("#entries").html("No entries");
