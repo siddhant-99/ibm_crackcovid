@@ -170,7 +170,6 @@
               <div class="content">
                 <p>
                   <strong>
-                    {{sno}}
                     {{hname}}
                   </strong>
 
@@ -220,7 +219,7 @@
         geocodeAddress(geocoder, map);
 
         function geocodeAddress(geocoder, resultsMap) {
-          var address = data.hname + ' ' + data.haddress;
+          var address = data.hname + " " + data.haddress;
           console.log(address);
           geocoder.geocode({ address: address }, function (results, status) {
             if (status === "OK") {
@@ -239,6 +238,71 @@
                 markerArray,
                 stepDisplay,
                 map
+              );
+              var service = new google.maps.DistanceMatrixService();
+              var bounds = new google.maps.LatLngBounds();
+
+              var destinationIcon =
+                "https://chart.googleapis.com/chart?" +
+                "chst=d_map_pin_letter&chld=D|FF0000|000000";
+              var originIcon =
+                "https://chart.googleapis.com/chart?" +
+                "chst=d_map_pin_letter&chld=O|FFFF00|000000";
+
+              service.getDistanceMatrix(
+                {
+                  origins: [start_pos],
+                  destinations: [dest_pos],
+                  travelMode: "DRIVING",
+                  unitSystem: google.maps.UnitSystem.METRIC,
+                  avoidHighways: false,
+                  avoidTolls: false,
+                },
+                function (response, status) {
+                  if (status !== "OK") {
+                    alert("Error was: " + status);
+                  } else {
+                    var originList = response.originAddresses;
+                    var destinationList = response.destinationAddresses;
+                    var distanceText = "";
+
+                    var showGeocodedAddressOnMap = function (asDestination) {
+                      var icon = asDestination ? destinationIcon : originIcon;
+                      return function (results, status) {
+                        if (status === "OK") {
+                          map.fitBounds(
+                            bounds.extend(results[0].geometry.location)
+                          );
+                        } else {
+                          alert("Geocode was not successful due to: " + status);
+                        }
+                      };
+                    };
+
+                    for (var i = 0; i < originList.length; i++) {
+                      var results = response.rows[i].elements;
+                      geocoder.geocode(
+                        { address: originList[i] },
+                        showGeocodedAddressOnMap(false)
+                      );
+                      for (var j = 0; j < results.length; j++) {
+                        geocoder.geocode(
+                          { address: destinationList[j] },
+                          showGeocodedAddressOnMap(true)
+                        );
+                        distanceText +=
+                          originList[i] +
+                          " to " +
+                          destinationList[j] +
+                          ": " +
+                          results[j].distance.text +
+                          " in " +
+                          results[j].duration.text;
+                      }
+                    }
+                    console.log(distanceText);
+                  }
+                }
               );
             } else {
               alert(
