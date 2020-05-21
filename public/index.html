@@ -160,6 +160,8 @@
         </div>
       {{/each}}
     </script>
+    
+
 
     <script
       async
@@ -169,6 +171,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="guestbook.js"></script>
+
+    <script>
+        myFunc = function(obj){
+  obj = obj.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+  console.log(JSON.parse(obj));
+}
+
+Handlebars.registerHelper('getThis', function() {
+  return JSON.stringify(this);
+});
+    </script>
 
     <p>&nbsp;</p>
     <footer class="footer">

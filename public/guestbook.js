@@ -31,14 +31,7 @@ const guestbook = {
 
 var no_docs;
 
-myFunc = function(obj){
-  obj = obj.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-  console.log(JSON.parse(obj));
-}
 
-Handlebars.registerHelper('getThis', function() {
-  return JSON.stringify(this);
-});
 
 
 (function () {
