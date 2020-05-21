@@ -19,10 +19,10 @@
 Then open [localhost:3000](http://localhost:3000) in your browser.
 
 ## Authors
- -[Siddhant Dangi] (https://www.linkedin.com/in/siddhant-dangi-8b9707153/)
- -[Jivat Neet Kaur] (www.linkedin.com/in/jivat-neet-14a4b0187)
- -[Honnesh Rohmetra](https://www.linkedin.com/in/honnesh-rohmetra/)
- -[Abhishek Agarwal](https://www.linkedin.com/in/abhishek-agarwal-003623166/)
+ - [Siddhant Dangi] (https://www.linkedin.com/in/siddhant-dangi-8b9707153/)
+ - [Jivat Neet Kaur] (www.linkedin.com/in/jivat-neet-14a4b0187)
+ - [Honnesh Rohmetra](https://www.linkedin.com/in/honnesh-rohmetra/)
+ - [Abhishek Agarwal](https://www.linkedin.com/in/abhishek-agarwal-003623166/)
           
 ## Contents
 1. [Overview](overview)
