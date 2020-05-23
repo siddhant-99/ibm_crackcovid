@@ -52,6 +52,14 @@ A web application can help all - those have been affected as well as those who h
 
 ## Video
 ## The Idea
+With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accomodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. Also, there is a prevalent disparity in the financial state of the patients which can result in added mental burden. 
+
+Our application provides a platform for all the listed hospitals to share real-time statistics like number of beds available, insurance panels registered, distance from the location of the patient, etc which can significantly help the patient to select the treatment center which is most suitable for his/her needs. 
+
+For those people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
+
+The application provides the user with number of people present at any given location within a certain radius, which helps the user to stay aware and cautious before making a decision to visit them. With the help of deep learning, a detection model was also integrated which generates a ratio of people not wearing masks out of the total people present at a place, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and parks this application is furthermore crucial as above a threshold this ratio can clearly convey the peril of visiting the place. 
+
 
 ## How it works
 ## Diagrams
