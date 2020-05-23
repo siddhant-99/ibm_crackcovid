@@ -50,6 +50,28 @@ The application provides the user with number of people present at any given loc
 
 ## How it works
 
+**Integration of Hospital Monitoring DB with (App name) app** (Dangi)
+- Hospital Dashboard Login
+- How implemented Login securely
+- IBM cloudant for DB
+- Form fields  + screenshots
+
+**Integration of (App name) app with Google Maps Platform** (Dangi)
+- Google Maps APIS used + screenshots
+
+**Mask Detection Model** (Honnesh)
+- Model Architecture
+- Input and Ouput (Image input, extrapolation to video below)
+
+**Integration of live Video feed and Mask Detection model to predict Safety score** (Honnesh + Jivat)
+- How model takes video feeds
+- Predict score at equally separated frames and return avg safety score
+
+**Integration of location-based Safety score with (App name) app** (Jivat + Dangi)
+- Using IBM Cloudant database
+- How sending lat, long, predicted score to the cloudantDB
+- Retrieving from IBM cloudant DB into app
+
 ## Diagrams
 ## Documents
 
