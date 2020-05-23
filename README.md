@@ -25,8 +25,8 @@ Then open [localhost:3000](http://localhost:3000) in your browser.
  - [Abhishek Agarwal](https://www.linkedin.com/in/abhishek-agarwal-003623166/)
           
 ## Contents
-1. [Overview](overview)
-2. [Video](video)
+1. [Overview](#overview)
+2. [Video](#video)
 3. [The idea](the-idea)
 4. [How it works](how-it-works)
 5. [Diagrams](diagrams)
