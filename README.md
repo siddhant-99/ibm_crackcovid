@@ -69,7 +69,7 @@ The application provides the user with number of people present at any given loc
 **Tutorials and Documentation**
 
 - [IBM Cloudant Documentation](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
-- [Build models using Jupyter Notebooks in IBM Watson Studio] (https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
+- [Build models using Jupyter Notebooks in IBM Watson Studio(https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
 - [Watson Studio Documentation](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?audience=wdp&context=wdp)
 - [Directions Service-Google Maps API](https://developers.google.com/maps/documentation/javascript/directions)
 
