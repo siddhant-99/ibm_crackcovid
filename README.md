@@ -27,15 +27,15 @@ Then open [localhost:3000](http://localhost:3000) in your browser.
 ## Contents
 1. [Overview](#overview)
 2. [Video](#video)
-3. [The idea](the-idea)
-4. [How it works](how-it-works)
-5. [Diagrams](diagrams)
-6. [Documents](documents)
-7. [Datasets](datasets)
-8. [Technology](technology)
-9. [Getting started](getting-started)
-10. [Resources](resources)
-11. [License](license)
+3. [The idea](#the-idea)
+4. [How it works](#how-it-works)
+5. [Diagrams](#diagrams)
+6. [Documents](#documents)
+7. [Datasets](#datasets)
+8. [Technology](#technology)
+9. [Getting started](#getting-started)
+10. [Resources](#resources)
+11. [License](#license)
 
 ## Overview
 
