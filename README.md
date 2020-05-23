@@ -49,6 +49,7 @@ Also, as lockdown relaxations are taking place, people will be stepping out to g
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
 A web application can help all - those have been affected as well as those who haven't been yet - by providing essential statistics and services that can make them aware of current scenario at different locations and aid them in selecting the best possible treatment available within their financial and personal constraints.
+//Add about IBM services used in brief
 
 ## Video
 ## The Idea
