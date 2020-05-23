@@ -30,7 +30,7 @@ In times of crisis, there are multiple issues which affect the community and we'
 
 Also, as lockdown relaxations are taking place, people will be stepping out to go to work, purchase essentials and carry out other activities. But, normalcy has not returned and the hesitation and fear of safety will still affect people when they think about stepping out. A live monitoring of the safety status of locations around people will help manage crowd and the safety scenario in an efficient manner.
 
-**How can technology help?**
+### How can technology help?
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
@@ -50,24 +50,24 @@ The application provides the user with number of people present at any given loc
 
 ## How it works
 
-**Integration of Hospital Monitoring DB with (App name) app** (Dangi)
+### Integration of Hospital Monitoring DB with (App name) app (Dangi)
 - Hospital Dashboard Login
 - How implemented Login securely
 - IBM cloudant for DB
 - Form fields  + screenshots
 
-**Integration of (App name) app with Google Maps Platform** (Dangi)
+### Integration of (App name) app with Google Maps Platform (Dangi)
 - Google Maps APIS used + screenshots
 
-**Mask Detection Model** (Honnesh)
+### Mask Detection Model (Honnesh)
 - Model Architecture
 - Input and Ouput (Image input, extrapolation to video below)
 
-**Integration of live Video feed and Mask Detection model to predict Safety score** (Honnesh + Jivat)
+### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
 - How model takes video feeds
 - Predict score at equally separated frames and return avg safety score
 
-**Integration of location-based Safety score with (App name) app** (Jivat + Dangi)
+### Integration of location-based Safety score with (App name) app (Jivat + Dangi)
 - Using IBM Cloudant database
 - How sending lat, long, predicted score to the cloudantDB
 - Retrieving from IBM cloudant DB into app
@@ -75,7 +75,7 @@ The application provides the user with number of people present at any given loc
 ## Diagrams
 ## Documents
 
-**Tutorials and Documentation**
+### Tutorials and Documentation
 
 - [IBM Cloudant Documentation](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
 - [Build models in IBM Watson Studio](https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
@@ -88,18 +88,18 @@ The application provides the user with number of people present at any given loc
 
 ## Technology
 
-**IBM Technology**
+### IBM Technology*
 - [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
 - [IBM App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)
 
-**Open source Technology**
+### Open source Technology
 
 - [Node.js](https://nodejs.org/en/)
 - [Google Maps Platform](https://developers.google.com/maps/documentation)
 
 ## Installation
 
-#### Dependencies
+### Dependencies
 
 `npm install`   -> To install all the dependecies.
 
@@ -108,7 +108,7 @@ The application provides the user with number of people present at any given loc
 - passport
 - ibmcloud-appid
 
-#### Usage
+### Usage
 
 `node.exe app.js`
 
@@ -116,22 +116,22 @@ Then open [localhost:3000](http://localhost:3000) in your browser.
 
 ## Getting started
 
-**Prerequisites**
+### Prerequisites
 
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account
 - Download [node.js](https://nodejs.org/en/)
 
-**Setting up the app**
+### Setting up the app
 - Step-by-step Cloudant setup
 - How extract from DB, hospital dashboars
 
-**Setting up Model**
+### Setting up Model
 - Set up models - Python script for that
 - Video pre-processing
 
-**Connect Google Maps APIs for location**
+### Connect Google Maps APIs for location
 
-**Send score data to IBM cloudant DB and retrieve from there for app**
+### Send score data to IBM cloudant DB and retrieve from there for app
 
 ## Resources
 ## License
