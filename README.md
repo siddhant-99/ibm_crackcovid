@@ -75,6 +75,15 @@ The application provides the user with number of people present at any given loc
 
 ## Datasets
 ## Technology
+
+**IBM Technology**
+- [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
+
+**Open-Source Technology**
+
+- [Node.js](https://nodejs.org/en/)
+- [Google Maps Platform](https://developers.google.com/maps/documentation)
+
 ## Getting started
 ## Resources
 ## License
