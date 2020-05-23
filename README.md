@@ -71,8 +71,8 @@ The application provides the user with number of people present at any given loc
 
 ## Getting started
 
-#### Prerequisites
-**Dependencies**
+**Prerequisites**
+#### Dependencies
 
 `npm install`   -> To install all the dependecies.
 
@@ -81,7 +81,7 @@ The application provides the user with number of people present at any given loc
 - passport
 - ibmcloud-appid
 
-**Usage**
+#### Usage
 
 `node.exe app.js`
 
