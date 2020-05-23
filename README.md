@@ -49,6 +49,29 @@ The application provides the user with number of people present at any given loc
 (**Add IBM cloudant database being used and other IBM services for this idea**)
 
 ## How it works
+
+**Integration of Hospital Monitoring DB with (App name) app** (Dangi)
+- Hospital Dashboard Login
+- How implemented Login securely
+- IBM cloudant for DB
+- Form fields  + screenshots
+
+**Integration of (App name) app with Google Maps Platform** (Dangi)
+- Google Maps APIS used + screenshots
+
+**Mask Detection Model** (Honnesh)
+- Model Architecture
+- Input and Ouput (Image input, extrapolation to video below)
+
+**Integration of live Video feed and Mask Detection model to predict Safety score** (Honnesh + Jivat)
+- How model takes video feeds
+- Predict score at equally separated frames and return avg safety score
+
+**Integration of location-based Safety score with (App name) app** (Jivat + Dangi)
+- Using IBM Cloudant database
+- How sending lat, long, predicted score to the cloudantDB
+- Retrieving from IBM cloudant DB into app
+
 ## Diagrams
 ## Documents
 
@@ -60,6 +83,9 @@ The application provides the user with number of people present at any given loc
 - [Directions Service-Google Maps API](https://developers.google.com/maps/documentation/javascript/directions)
 
 ## Datasets
+
+- [Face Mask Dataset](https://drive.google.com/file/d/1QspxOJMDf_rAWVV7AU_Nc0rjo1_EPEDW/view) - [WIDER Face](http://shuoyang1213.me/WIDERFACE/) and [MAFA](http://www.escience.cn/people/geshiming/mafa.html) (MAsked FAces) datasets have been combined to form the Face Mask Dataset after correction of wrong annotations
+
 ## Technology
 
 **IBM Technology**
