@@ -69,13 +69,13 @@
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Places monitored</p>
-          <p class="title" id="places_monitored">456</p>
+          <p class="title" id="places_monitored"></p>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Safety Score Outside</p>
-          <p class="title" id="avsaftey_scoreInfo">67</p>
+          <p class="title" id="avsaftey_scoreInfo"></p>
         </div>
       </div>
     </nav>
@@ -268,6 +268,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="guestbook.js"></script>
 
+    <script src="maskbook.js"></script>
+
     <script>
       myFunc = function (obj) {
         if (obj) {
@@ -278,11 +280,11 @@
           var data = JSON.parse(obj);
         } else {
           data = null;
-          console.log("Empty");
         }
 
         var safetyScore_user = 0;
         var PeopleScore_user = 0;
+
 
         geocodeAddress(geocoder, map);
         var distanceText = "";
@@ -304,6 +306,21 @@
               dest_marker.setMap(resultsMap);
               dest_marker.setPosition(dest_pos);
 
+
+              if(!data){
+              for (var i = 0; i < maskdataStored.entries.length; i++) {
+                if((dest_pos.lat-parseFloat(maskdataStored.entries[i].lattitude) < 0.01) && (dest_pos.lng-parseFloat(maskdataStored.entries[i].longitude) < 0.01)){
+                  PeopleScore_user = maskdataStored.entries[i].npeople;
+                  safetyScore_user = maskdataStored.entries[i].score;
+
+                  console.log(PeopleScore_user);
+                  console.log(safetyScore_user);
+                }
+              }
+
+              $("#people_info").text(PeopleScore_user);
+              $("#scoreInfo").text(safetyScore_user);
+            }
               infoWindow.close(map);
               calculateAndDisplayRoute(
                 directionsRenderer,
@@ -449,7 +466,7 @@
         }
 
         if (data) {
-          var temp = data.poc + " " + "|"+ " " + data.hemail;
+          var temp = data.poc + " " + "|" + " " + data.hemail;
           $("#hcard").show();
           $("#ucard").hide();
           $("#card_hname").text(data.hname);
@@ -461,8 +478,6 @@
           $("#ucard").show();
           $("#hcard").hide();
           $("#card_uname").text($("#safety_add").val().trim());
-          $("#people_info").text(PeopleScore_user);
-          $("#scoreInfo").text(safetyScore_user);
         }
       };
 
