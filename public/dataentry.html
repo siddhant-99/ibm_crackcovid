@@ -44,6 +44,7 @@
           >
         </p>
         <h3 id="user" align="right">Unauthorised</h3>
+        <p id="useremail" style="display: none;"></p>
 
         <p><br /></p>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -53,11 +54,13 @@
             $.get("/api/user").then(
               (resp) => {
                 $("#user").text("Hello " + resp.user.name);
+                $("#useremail").text(resp.user.email);
                 $("#logout").show();
                 $("#login").hide();
               },
               () => {
                 $("#user").text("Unauthorised");
+                $("#useremail").text("404");
                 $("#logout").hide();
                 $("#login").show();
               }

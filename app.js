@@ -54,9 +54,11 @@ app.use('/api', (req, res, next) => {
 // The /api/user API used to retrieve name of a currently logged in user
 app.get('/api/user', (req, res) => {
 	// console.log(req.session[WebAppStrategy.AUTH_CONTEXT]);
+	
 	res.json({
 		user: {
-			name: req.user.name
+			name: req.user.name,
+			email: req.user.email
 		}
 	});
 });
