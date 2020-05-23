@@ -49,7 +49,7 @@ Also, as lockdown relaxations are taking place, people will be stepping out to g
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
 A web application can help all - those have been affected as well as those who haven't been yet - by providing essential statistics and services that can make them aware of current scenario at different locations and aid them in selecting the best possible treatment available within their financial and personal constraints.
-**Add about IBM services used in brief**
+(**Add about IBM services used in brief**)
 
 ## Video
 ## The Idea
@@ -60,7 +60,7 @@ Our application provides a platform for all the listed hospitals to share real-t
 For those people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
 The application provides the user with number of people present at any given location within a certain radius, which helps the user to stay aware and cautious before making a decision to visit the location. With the help of deep learning, a mask detection model was also integrated which generates a ratio of people not wearing masks out of the total people present at a place, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and parks this application is furthermore crucial as above a threshold this ratio can clearly convey the peril of visiting the place. 
-**Add IBM cloudant database being used and other IBM services for this idea**
+(**Add IBM cloudant database being used and other IBM services for this idea**)
 
 ## How it works
 ## Diagrams
