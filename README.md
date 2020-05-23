@@ -2,22 +2,6 @@
  
  IBM Crack the COVID Hackathon
 
-
-**Dependencies**
-
-`npm install`   -> To install all the dependecies.
-
-- express
-- express-session
-- passport
-- ibmcloud-appid
-
-**Usage**
-
-`node.exe app.js`
-
-Then open [localhost:3000](http://localhost:3000) in your browser.
-
 ## Authors
  - [Siddhant Dangi](https://www.linkedin.com/in/siddhant-dangi-8b9707153/)
  - [Jivat Neet Kaur](https://www.linkedin.com/in/jivat-neet-14a4b0187)
@@ -33,9 +17,10 @@ Then open [localhost:3000](http://localhost:3000) in your browser.
 6. [Documents](#documents)
 7. [Datasets](#datasets)
 8. [Technology](#technology)
-9. [Getting started](#getting-started)
-10. [Resources](#resources)
-11. [License](#license)
+9. [Prerequisites and Installation](#prerequisites-and-installation)
+10. [Getting started](#getting-started)
+11. [Resources](#resources)
+12. [License](#license)
 
 ## Overview
 
@@ -84,6 +69,23 @@ The application provides the user with number of people present at any given loc
 
 - [Node.js](https://nodejs.org/en/)
 - [Google Maps Platform](https://developers.google.com/maps/documentation)
+
+## Prerequisites and Installation
+
+#### Dependencies
+
+`npm install`   -> To install all the dependecies.
+
+- express
+- express-session
+- passport
+- ibmcloud-appid
+
+#### Usage
+
+`node.exe app.js`
+
+Then open [localhost:3000](http://localhost:3000) in your browser.
 
 ## Getting started
 ## Resources
