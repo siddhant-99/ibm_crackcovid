@@ -17,7 +17,7 @@
 6. [Documents](#documents)
 7. [Datasets](#datasets)
 8. [Technology](#technology)
-9. [Prerequisites and Installation](#prerequisites-and-installation)
+9. [Installation](#installation)
 10. [Getting started](#getting-started)
 11. [Resources](#resources)
 12. [License](#license)
@@ -97,7 +97,7 @@ The application provides the user with number of people present at any given loc
 - [Node.js](https://nodejs.org/en/)
 - [Google Maps Platform](https://developers.google.com/maps/documentation)
 
-## Prerequisites and Installation
+## Installation
 
 #### Dependencies
 
@@ -115,5 +115,23 @@ The application provides the user with number of people present at any given loc
 Then open [localhost:3000](http://localhost:3000) in your browser.
 
 ## Getting started
+
+**Prerequisites**
+
+- Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account
+- Download [node.js](https://nodejs.org/en/)
+
+**Setting up the app**
+- Step-by-step Cloudant setup
+- How extract from DB, hospital dashboars
+
+**Setting up Model**
+- Set up models - Python script for that
+- Video pre-processing
+
+**Connect Google Maps APIs for location**
+
+**Send score data to IBM cloudant DB and retrieve from there for app**
+
 ## Resources
 ## License
