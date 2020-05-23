@@ -17,7 +17,7 @@
 6. [Documents](#documents)
 7. [Datasets](#datasets)
 8. [Technology](#technology)
-9. [Installation](#installation)
+9. [Installation](#installation) (Change heading - running the app??)
 10. [Getting started](#getting-started)
 11. [Resources](#resources)
 12. [License](#license)
