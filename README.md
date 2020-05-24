@@ -67,7 +67,7 @@ The application provides the user with number of people present at any given loc
 
 ## How it works
 
-### Integration of Hospital Monitoring DB with (App name) app (Dangi)
+### Integration of Hospital Monitoring DB with the web app
 - Hospital Dashboard Login
 
 App ID by IBM is used to monitor authentication for the login procedure. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, they will shown a alert message and prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
@@ -77,19 +77,32 @@ App ID by IBM is used to monitor authentication for the login procedure. Only ho
  app.js file creates a Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of a success redirects to the `/dataentry.html`. From that page, on a call to `/appid/logout` which is initiated by a click on the logout button, the user is again directed to `/index.html`.  A successful login also sends a response via `/api/user` which contains the user's name and the login ID, which is then also stored alongwith hospital data to identify which user filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
 
  ![Unauthorized Access](extras/unauthorsed_access.png)
+ ![Authorized Access](extras/authorsed_access.png)
  
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
 
   ![Identity Providers](extras/identiy_providers.png)
-- IBM cloudant for DB
+- IBM cloudant for Hospital DB
 
+Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
-- Form fields  + screenshots
+![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
-### Integration of (App name) app with Google Maps Platform (Dangi)
-- Google Maps APIS used + screenshots
+The details filled by the hospital post login, are sent to the guestbook database on click of the Submit button.
 
-### Mask Detection Model (Honnesh)
+![Form for Hospitals](extras/form_details.png)
+
+A GET request is also made to the database to retreve the data which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button all the information for that hospital is retrieved and is used to for further application.
+
+![Currently Onboard](extras/currently_onboard.png)
+
+### Integration of the web app with Google Maps Platform
+
+Based on the user input for a specific location, or by clicking on the More Details button, the location address string is retrieved and sent to the ***Geocoding API***, which finds the lattitude and longitude for the place. Then using the ***Directions API***, the shortest route to the location is found and displayed on the map. The ***Distance Matrix API*** finds the distance and duration of the travel time to reach the destination.
+
+![Maps Platform](extras/maps_platform.png)
+
+### Mask Detection Model 
 - Model Architecture
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
 - Input and Ouput (Image input, extrapolation to video below)
@@ -98,17 +111,11 @@ App ID by IBM is used to monitor authentication for the login procedure. Only ho
 - How model takes video feeds
 - Predict score at equally separated frames and return avg safety score
 
-### Integration of location-based Safety score with (App name) app (Jivat + Dangi)
+### Integration of location-based Safety score with the Web App app
 - Using IBM Cloudant database
-- How sending lat, long, predicted score to the cloudantDB
-- Retrieving from IBM cloudant DB into app
+Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score, lattitude and longitude of the camera to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region then the score associated with it is retrieved and then displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
 
-## Diagrams
-![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
-
-The from input are sent via a API request which puts the submitted data on a Cloudant NoSQL database.
-![Index Page Workflow](/extras/index_workflow.png)
-
+![Safety Score](extras/safety_score.png)
 
 ## Documents
 
