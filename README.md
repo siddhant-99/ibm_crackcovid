@@ -13,13 +13,12 @@
 2. [Video](#video)
 3. [The idea](#the-idea)
 4. [How it works](#how-it-works)
-5. [Diagrams](#diagrams)
-6. [Documents](#documents)
-7. [Datasets](#datasets)
-8. [Technology](#technology)
-9. [Running the App](#running-the-app)
-10. [Getting started](#getting-started)
-11. [License](#license)
+5. [Documents](#documents)
+6. [Datasets](#datasets)
+7. [Technology](#technology)
+8. [Running the App](#running-the-app)
+9.  [Getting started](#getting-started)
+10. [License](#license)
 
 ## Overview
 
