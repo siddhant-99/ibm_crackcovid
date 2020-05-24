@@ -66,14 +66,14 @@ The application provides the user with number of people present at any given loc
 
 ## How it works
 
-### Integration of Hospital Monitoring DB with the web app
-- Hospital Dashboard Login
+### Integration of Hospital Monitoring Database with the web app
+- Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
-App ID by IBM is used to monitor authentication for the login procedure. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, they will shown a alert message and prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
+**App ID by IBM** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
 ![App ID Authentication](extras/appid_flow.png)
  
- app.js file creates a Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of a success redirects to the `/dataentry.html`. From that page, on a call to `/appid/logout` which is initiated by a click on the logout button, the user is again directed to `/index.html`.  A successful login also sends a response via `/api/user` which contains the user's name and the login ID, which is then also stored alongwith hospital data to identify which user filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
+The file **app.js** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of a success redirects to the `/dataentry.html`. From that page, on a call to `/appid/logout` which is initiated by a click on the logout button, the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
 
  ![Unauthorized Access](extras/unauthorsed_access.png)
  ![Authorized Access](extras/authorsed_access.png)
@@ -81,7 +81,7 @@ App ID by IBM is used to monitor authentication for the login procedure. Only ho
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
 
   ![Identity Providers](extras/identiy_providers.png)
-- IBM cloudant for Hospital DB
+- IBM cloudant for Hospital DB<br />
 
 Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
@@ -124,12 +124,17 @@ Cloudant is used to setup a NoSQL Database which then can be used with a serverl
 
 ## Documents
 
-### Tutorials and Documentation
+### Documentation
 
 - [IBM Cloudant Documentation](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
+- [python-cloudant documentation](https://python-cloudant.readthedocs.io/en/stable/getting_started.html)
 - [Build models in IBM Watson Studio](https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
 - [Watson Studio Documentation](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?audience=wdp&context=wdp)
 - [Directions Service-Google Maps API](https://developers.google.com/maps/documentation/javascript/directions)
+
+### Tutorials
+
+- [Creating and populating a simple IBM Cloudant database on IBM Cloud](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-creating-and-populating-a-simple-ibm-cloudant-database-on-ibm-cloud)
 
 ## Datasets
 
