@@ -61,6 +61,7 @@ The application provides the user with number of people present at any given loc
 
 ### Mask Detection Model (Honnesh)
 - Model Architecture
+![Architecture](/load_model/face_mask_detection.caffemodel.png)
 - Input and Ouput (Image input, extrapolation to video below)
 
 ### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
