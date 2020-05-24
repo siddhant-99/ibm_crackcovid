@@ -19,8 +19,7 @@
 8. [Technology](#technology)
 9. [Running the App](#installation)
 10. [Getting started](#getting-started)
-11. [Resources](#resources)
-12. [License](#license)
+11. [License](#license)
 
 ## Overview
 
@@ -92,9 +91,6 @@ The application provides the user with number of people present at any given loc
 - Retrieving from IBM cloudant DB into app
 
 ## Diagrams
-![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
-![Index Page Workflow](/extras/index_workflow.png)
-![App ID Authentication](extras/appid_flow.png)
 ## Documents
 
 ### Tutorials and Documentation
@@ -179,5 +175,4 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 ### Send score data to IBM cloudant DB and retrieve from there for app
 
-## Resources
 ## License
