@@ -113,8 +113,6 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 The from input are sent via a API request which puts the submitted data on a Cloudant NoSQL database.
 ![Index Page Workflow](/extras/index_workflow.png)
 
-
-
 ## Documents
 
 ### Tutorials and Documentation
