@@ -19,8 +19,7 @@
 8. [Technology](#technology)
 9. [Running the App](#installation)
 10. [Getting started](#getting-started)
-11. [Resources](#resources)
-12. [License](#license)
+11. [License](#license)
 
 ## Overview
 
@@ -180,5 +179,4 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 ### Send score data to IBM cloudant DB and retrieve from there for app
 
-## Resources
 ## License
