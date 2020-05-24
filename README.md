@@ -126,7 +126,7 @@ The application provides the user with number of people present at any given loc
 - [Python](https://www.python.org/)
 - HTML
 
-## Installation
+## Running the App
 
 ### Dependencies
 
