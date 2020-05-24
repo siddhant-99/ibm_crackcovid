@@ -95,6 +95,7 @@ The application provides the user with number of people present at any given loc
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 ![Index Page Workflow](/extras/index_workflow.png)
 ![App ID Authentication](extras/appid_flow.png)
+
 ## Documents
 
 ### Tutorials and Documentation
