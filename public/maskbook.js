@@ -30,7 +30,7 @@ var maskdataStored;
           maskdataStored = context;
           console.log(maskdataStored);
           for(var i=0;i<no_places;i++){
-              avg_score+=maskdataStored.entries[i].score;
+              avg_score+=Number(maskdataStored.entries[i].score);
           }
 
           avg_score = avg_score/no_places;
