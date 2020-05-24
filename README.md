@@ -17,7 +17,7 @@
 6. [Documents](#documents)
 7. [Datasets](#datasets)
 8. [Technology](#technology)
-9. [Installation](#installation) (Change heading - running the app??)
+9. [Running the App](#installation)
 10. [Getting started](#getting-started)
 11. [Resources](#resources)
 12. [License](#license)
@@ -91,12 +91,19 @@ The application provides the user with number of people present at any given loc
 
 ### IBM Technology*
 - [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
-- [IBM App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)
+- [IBM App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)\
+- [IBM Functions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-getting-started)
 
 ### Open source Technology
 
-- [Node.js](https://nodejs.org/en/)
 - [Google Maps Platform](https://developers.google.com/maps/documentation)
+- [Bulma](https://bulma.io/)
+- [Handlebars](https://handlebarsjs.com/)
+
+### Programming Languages Used
+- [NodeJS](https://nodejs.org/en/)
+- [Python](https://www.python.org/)
+- HTML
 
 ## Installation
 
@@ -114,6 +121,23 @@ The application provides the user with number of people present at any given loc
 `node.exe app.js`
 
 Then open [localhost:3000](http://localhost:3000) in your browser.
+
+### For the mask detection model ->
+
+### Dependencies
+
+ `pip install -r requirements.txt `
+
+ - opencv-python
+ - pytorch
+ - cloudant
+ - numpy
+ - pillow
+ - python-googlegeocoder
+
+`python mask_model.py`
+
+Change `video_path=` variable in the script to use your own video file, or direct a camera feed directly to it using OpenCV.
 
 ## Getting started
 
