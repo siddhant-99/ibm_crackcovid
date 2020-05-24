@@ -117,6 +117,7 @@ Cloudant is used to setup a NoSQL Database which then can be used with a serverl
 
 ![Safety Score](extras/safety_score.png)
 
+
 ## Documents
 
 ### Tutorials and Documentation
