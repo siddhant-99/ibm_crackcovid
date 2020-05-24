@@ -91,7 +91,7 @@ The application provides the user with number of people present at any given loc
 
 ### IBM Technology*
 - [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
-- [IBM App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)\
+- [IBM App ID](https://cloud.ibm.com/docs/appid?topic=appid-getting-started)
 - [IBM Functions](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-getting-started)
 
 ### Open source Technology
