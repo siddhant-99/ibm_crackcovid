@@ -198,7 +198,7 @@ Change `video_path=` variable in the script to use your own video file, or direc
 - Step-by-step Cloudant setup
   
 [Cloudant setup](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-serverless-api-webapp)
-Follow the procedure mentioned in the above article for two databases guestbook and maskbook. The actions for the IBM functions can be found in the [IBMActions](/IBMActions) folder.
+->Follow the procedure mentioned in the above article for two databases guestbook and maskbook. The actions for the IBM functions can be found in the [IBMActions](/IBMActions) folder.
 
 - How extract from DB, hospital dashboard
 
@@ -207,7 +207,7 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
 - App ID setup
 
 [App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
-The above link can be referred to enable user authentication in your application.
+->The following link can be referred to enable user authentication in your application.
 
 ### Setting up Model
 - Set up models - Python script for that
