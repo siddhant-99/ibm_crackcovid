@@ -108,9 +108,9 @@ Based on the user input for a specific location, or by clicking on the More Deta
 - Input and Ouput (Image input, extrapolation to video below)
   
 The input is given in the form of a live videostream which is processed image frame by frame using OpenCV in Python.
-We used the structure of SSD. However, in order to make it run quickly on CCTV camera onboard computer, the backbone network is lite. The total model only has 1.01M parametes.
+We used the structure of SSD. However, in order to make it run quickly on CCTV camera onboard computer, the backbone network is lite. 
 
-Input size of the model is 260x260, the backbone network only has 8 conv layers. The total model has only 24 layers with the location and classification layers counted.
+The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. In total, the model has only 24 layers with the location and classification layers counted.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
