@@ -121,7 +121,7 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 - Using IBM Cloudant database
 Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score, lattitude and longitude of the camera to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region then the score associated with it is retrieved and then displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
 
-![Safety Score](extras/safety_score.png)
+![Safety Score](/extras/safety_score.png)
 
 ## Documents
 
