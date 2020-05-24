@@ -69,8 +69,21 @@ The application provides the user with number of people present at any given loc
 
 ### Integration of Hospital Monitoring DB with (App name) app (Dangi)
 - Hospital Dashboard Login
-- How implemented Login securely
+
+App ID by IBM is used to monitor authentication for the login procedure. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, they will shown a alert message and prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
+
+![App ID Authentication](extras/appid_flow.png)
+ 
+ app.js file creates a Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of a success redirects to the `/dataentry.html`. From that page, on a call to `/appid/logout` which is initiated by a click on the logout button, the user is again directed to `/index.html`.  A successful login also sends a response via `/api/user` which contains the user's name and the login ID, which is then also stored alongwith hospital data to identify which user filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
+
+ ![Unauthorized Access](extras/unauthorsed_access.png)
+ 
+  IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
+
+  ![Identity Providers](extras/identiy_providers.png)
 - IBM cloudant for DB
+
+
 - Form fields  + screenshots
 
 ### Integration of (App name) app with Google Maps Platform (Dangi)
@@ -92,8 +105,10 @@ The application provides the user with number of people present at any given loc
 
 ## Diagrams
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
+
+The from input are sent via a API request which puts the submitted data on a Cloudant NoSQL database.
 ![Index Page Workflow](/extras/index_workflow.png)
-![App ID Authentication](extras/appid_flow.png)
+
 
 ## Documents
 
