@@ -196,13 +196,16 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 ### Setting up the app
 - Step-by-step Cloudant setup
+  
 [Cloudant setup](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-serverless-api-webapp)
 Follow the procedure mentioned in the above article for two databases guestbook and maskbook. The actions for the IBM functions can be found in the [IBMActions](/IBMActions) folder.
 
 - How extract from DB, hospital dashboard
+
 API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
 
 - App ID setup
+
 [App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
 The above link can be referred to enable user authentication in your application.
 
