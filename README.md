@@ -39,21 +39,21 @@ A web application can help all - those have been affected as well as those who h
 
 ## Video
 
-IBM Hackathon video script
+### IBM Hackathon video script
 
-Problem Description:
+**Problem Description:**
 As the number of Covid-19 cases will continue to rise, the number of people seeking treatment will overwhelm hospitals. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while admitting patients to these treatment centres, leading to a risk of life. Having a handle on local hospitals’ capacity and resource availability could help balance the load of Covid-19 patients who are requiring hospitalization by sending a patient to a facility where they are more likely to be treated quickly. But there is no unified platform with real-time data on the current capacity and resources to treat Covid-19 patients.
 
 Another issue we'll be witnessing with the relaxation of lockdown restrictions is when people will be stepping out to go to work, purchase essentials and carry out other activities. But, normalcy has not returned and the hesitation and fear of safety will still affect people when they think about stepping out. A live monitoring of the safety status of locations around people will help manage crowd and the safety scenario in an efficient manner.
 
-Solution:
-To address the need of a real-time tracking system for Covid-19 beds and hospital resources, our team designed a website with a live Hospital Resource Monitoring Dashboard [Display the dashboard]. If you are a patient and need assistance, you can find information regarding nearby hospitals, bed capacity and test availability. If you are a nurse, doctor, health department or state, you can use the Hospital Dashboard Login [Display the form and real-time updation feature, mention IBM AppID for login] and share information on the current hospital capacity. [Details about implementation - using IBM cloudant for the database] We are using the IBM cloud service Cloudant to design and manage our database for Hospital records.
+**Solution:**
+To address the need of a real-time tracking system for Covid-19 beds and hospital resources, our team designed a website with a live Hospital Resource Monitoring Dashboard **Display the dashboard**. If you are a patient and need assistance, you can find information regarding nearby hospitals, bed capacity and test availability. If you are a nurse, doctor, health department or state, you can use the Hospital Dashboard Login **Display the form and real-time updation feature, mention IBM AppID for login** and share information on the current hospital capacity. **Details about implementation - using IBM cloudant for the database** We are using the IBM cloud service Cloudant to design and manage our database for Hospital records.
 
-If you are thinking about stepping out to buy something from the shopping complex or need to get something repaired and are worried about the safety scenario out there, we're tracking the safety score of all the places onboard through their live video camera feed. The video feed is processed every 10 minutes locally and the number of people present and the percentage of people wearing masks is calculated using our mask detection model [show the model architecture and model results on a video]. The latitude and longitude of the location, number of people and safety score indicated by the % of people wearing masks is stored in a JSON document. IBM Cloudant database is used to store the location info and corresponding safety scores. If the location info pre-exists on the database, the safety score is simply updated.
+If you are thinking about stepping out to buy something from the shopping complex or need to get something repaired and are worried about the safety scenario out there, we're tracking the safety score of all the places onboard through their live video camera feed. The video feed is processed every 10 minutes locally and the number of people present and the percentage of people wearing masks is calculated using our mask detection model **show the model architecture and model results on a video**. The latitude and longitude of the location, number of people and safety score indicated by the % of people wearing masks is stored in a JSON document. IBM Cloudant database is used to store the location info and corresponding safety scores. If the location info pre-exists on the database, the safety score is simply updated.
 
-The user can view the safety score for their destination location through the search option on our app [Zoom into 'Search for your destination']. This allows efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
+The user can view the safety score for their destination location through the search option on our app **Zoom into 'Search for your destination'**. This allows efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
 
-The map in tha app displays the route to the destination along with the Travel Distance and duration. [Focus on map]
+The map in tha app displays the route to the destination along with the Travel Distance and duration. **Focus on map**
 Our solution aims to solve multiple issues posed by the Covid-19 crisis and if the concerned authorities come onboard, it can be resourceful to patients, doctors, emergency medical personnel and all the other users beyond measure. 
  
 ## The Idea
