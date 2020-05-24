@@ -17,7 +17,7 @@
 6. [Documents](#documents)
 7. [Datasets](#datasets)
 8. [Technology](#technology)
-9. [Running the App](#installation)
+9. [Running the App](#running-the-app)
 10. [Getting started](#getting-started)
 11. [License](#license)
 
@@ -141,7 +141,7 @@ The from input are sent via a API request which puts the submitted data on a Clo
 - [Python](https://www.python.org/)
 - HTML
 
-## Installation
+## Running the App
 
 ### Dependencies
 
