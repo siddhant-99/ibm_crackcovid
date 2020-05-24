@@ -113,7 +113,7 @@ The total model has 1.01M parametes. Input size of the model is 260x260, the bac
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
-![Inferred Image](/extras/Test_Image_Mask.jpg)
+![Inferred Image](/Test_Image_Mask.jpg)
 - How model takes video feeds
 - Predict score at equally separated frames and return avg safety score
 
