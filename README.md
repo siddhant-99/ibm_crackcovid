@@ -109,16 +109,9 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 
 ## Diagrams
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
-<<<<<<< HEAD
 
 The from input are sent via a API request which puts the submitted data on a Cloudant NoSQL database.
 ![Index Page Workflow](/extras/index_workflow.png)
-=======
-
-The from input are sent via a API request which puts the submitted data on a Cloudant NoSQL database.
-![Index Page Workflow](/extras/index_workflow.png)
-
->>>>>>> parent of 3aef027... Update Readme
 
 ## Documents
 
