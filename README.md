@@ -128,13 +128,13 @@ Cloudant is used to setup a NoSQL Database which then can be used with a serverl
 
 - [IBM Cloudant Documentation](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-getting-started-with-cloudant)
 - [python-cloudant documentation](https://python-cloudant.readthedocs.io/en/stable/getting_started.html)
-- [Build models in IBM Watson Studio](https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
 - [Watson Studio Documentation](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/welcome-main.html?audience=wdp&context=wdp)
 - [Directions Service-Google Maps API](https://developers.google.com/maps/documentation/javascript/directions)
 
 ### Tutorials
 
 - [Creating and populating a simple IBM Cloudant database on IBM Cloud](https://cloud.ibm.com/docs/Cloudant?topic=Cloudant-creating-and-populating-a-simple-ibm-cloudant-database-on-ibm-cloud)
+- [Build models in IBM Watson Studio](https://developer.ibm.com/technologies/artificialintelligence/tutorials/watson-studio-using-jupyter-notebook/)
 
 ## Datasets
 
