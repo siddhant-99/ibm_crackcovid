@@ -55,7 +55,7 @@ The map in tha app displays the route to the destination along with the Travel D
 Our solution aims to solve multiple issues posed by the Covid-19 crisis and if the concerned authorities come onboard, it can be resourceful to patients, doctors, emergency medical personnel and all the other users beyond measure. 
  
 ## The Idea
-With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accomodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. Also, there is a prevalent disparity in the financial state of the patients which can result in added mental and financial burden. 
+With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. Also, there is a prevalent disparity in the financial state of the patients which can result in added mental and financial burden. 
 
 Our application provides a platform for all the listed hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of ventilators and other resources which can significantly help the patient to select the treatment center which is most suitable for his/her needs. 
 
