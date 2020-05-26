@@ -102,6 +102,8 @@ Based on the user input for a specific location, or by clicking on the More Deta
 
 ![Maps Platform](extras/maps_platform.png)
 
+![Maps API Calls](extras/index_workflow.png)
+
 ### Mask Detection Model 
 - Model Architecture
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
