@@ -99,9 +99,11 @@ A GET request is also made to the database to retrieve the data regarding hospit
 ![Currently Onboard](extras/currently_onboard.png)
 
 ### Integration of the web application with Google Maps Platform
-  <p align="right">
+
+  <p align="centre">
   <img src = "extras/index_workflow.png">
   </p> 
+  
 When the user inputs a specific location in `Search for your Destination` bar or clicks on the `More Details` button for a hospital, the location address string is retrieved and sent to the ***Geocoding API***, which finds the latitude and longitude for the place. Then using the ***Directions API***, the shortest route to the destination is computed and displayed on the map. The ***Distance Matrix API*** finds the distance and travel time required to reach the destination.
 
 ![Maps Platform](extras/maps_platform.png)
