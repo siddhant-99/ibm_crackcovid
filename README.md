@@ -56,7 +56,7 @@ Our solution aims to solve multiple issues posed by the Covid-19 crisis and if t
 ## The Idea
 With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. 
 
-Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of ventilators which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
+Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of **ventilators?** which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 For the people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
@@ -66,7 +66,7 @@ The application provides the user with a close real-time approximate of the numb
 
 ### Integration of Hospital Monitoring Database with the web application
 
-#### Authentication
+### 1. Authentication
 - Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
 **App ID by IBM** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
@@ -83,15 +83,16 @@ The file **app.js** creates an Authentication Strategy based on App ID. On a cal
   ![Identity Providers](extras/identiy_providers.png)
 - IBM cloudant for Hospital DB<br />
 
-Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
+### 2. Hospital Monitoring Database
+IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
-The details filled by the hospital post login, are sent to the guestbook database on click of the Submit button.
+The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the Submit button.
 
 ![Form for Hospitals](extras/form_details.png)
 
-A GET request is also made to the database to retreve the data which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button all the information for that hospital is retrieved and is used to for further application.
+A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
 
 ![Currently Onboard](extras/currently_onboard.png)
 
