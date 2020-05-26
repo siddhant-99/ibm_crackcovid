@@ -64,14 +64,16 @@ The application provides the user with a close real-time approximate of the numb
 
 ## How it works
 
-### Integration of Hospital Monitoring Database with the web app
+### Integration of Hospital Monitoring Database with the web application
+
+#### Authentication
 - Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
 **App ID by IBM** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
 ![App ID Authentication](extras/appid_flow.png)
  
-The file **app.js** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of a success redirects to the `/dataentry.html`. From that page, on a call to `/appid/logout` which is initiated by a click on the logout button, the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
+The file **app.js** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of success redirects to `/dataentry.html`. From that page, a click on the logout button, initiates a call to `/appid/logout` and the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
 
  ![Unauthorized Access](extras/unauthorsed_access.png)
  ![Authorized Access](extras/authorsed_access.png)
