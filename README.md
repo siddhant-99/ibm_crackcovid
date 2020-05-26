@@ -122,11 +122,11 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
 ![Inferred Image](Test_Image_Mask.png)
-- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a lite model with less number of parameters, live video stream captured can be directly infernced on the connected computer.
+- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a lite model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
 This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
 Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric values calculated.
 This makes our solution even more lightweight and easily deployable.
-
+![CCTV_Delhi](/extras/cct-770x433.png)
 Safety score is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
 A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
 
