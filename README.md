@@ -230,6 +230,7 @@ Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data lay
 In this section, you will create serverless actions (commonly termed as Functions). ***IBM Cloud™ Functions*** (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
 
 ***Sequence of actions to save the guestbook entry***
+
 You will create a sequence which is a chain of actions where output of one action acts as an input to the following action and so on. The first sequence you will create is used to persist a guest message. Provided a name, an emailID and a comment, the sequence will:
 
 * Create a document to be persisted.
