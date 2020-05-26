@@ -102,9 +102,10 @@ A GET request is also made to the database to retrieve the data regarding hospit
 
 ![Maps API Calls](extras/index_workflow.png)
 When the user inputs a specific location in `Search for your Destination` bar or clicks on the `More Details` button for a hospital, the location address string is retrieved and sent to the ***Geocoding API***, which finds the latitude and longitude for the place. Then using the ***Directions API***, the shortest route to the destination is computed and displayed on the map. The ***Distance Matrix API*** finds the distance and travel time required to reach the destination.
-  <p align="center">
+
+  <p align="right">
   <img src = "extras/maps_platform.png">
-  </p>
+  </p> 
 ### Prediction of Safety score with Mask Detection Model
 
 ### 1. Architecture
