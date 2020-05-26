@@ -207,11 +207,8 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account
 - Download [node.js](https://nodejs.org/en/)
-
-### Setting up the app
-- Step-by-step Cloudant setup
   
-#### Create the Guestbook database
+### Create the Guestbook database using an IBM Cloudant instance
 
 Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data layer designed for modern web and mobile applications that leverages a flexible JSON schema. IBM Cloudant is built upon and compatible with Apache CouchDB and accessible through a secure HTTPS API, which scales as your application grows.
 
@@ -304,10 +301,9 @@ Complete the sequence:
 
 API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
 
-- App ID setup
+### Set up IBM Cloud App ID for authentication
 
-[App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
-->The following link can be referred to enable user authentication in your application.
+- The following link can be referred to enable user authentication in your application - [App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
 
 ### Setting up Model
 - Set up models - Python script for that
