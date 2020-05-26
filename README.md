@@ -122,8 +122,13 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
 ![Inferred Image](Test_Image_Mask.png)
-- How model takes video feeds and continuously looping
-- Predict score based on % of people wearing masks at equally separated frames (10 min feed) and return avg safety score and avg no of people
+- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a lite model with less number of parameters, live video stream captured can be directly infernced on the connected computer.
+This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
+Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric values calculated.
+This makes our solution even more lightweight and easily deployable.
+
+Safety score is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
+A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
 
 ### Integration of location-based Safety score with the web application
 
@@ -207,8 +212,11 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account
 - Download [node.js](https://nodejs.org/en/)
+
+### Setting up the app
+- Step-by-step Cloudant setup
   
-### Create the Guestbook database using an IBM Cloudant instance
+#### Create the Guestbook database
 
 Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data layer designed for modern web and mobile applications that leverages a flexible JSON schema. IBM Cloudant is built upon and compatible with Apache CouchDB and accessible through a secure HTTPS API, which scales as your application grows.
 
@@ -297,11 +305,14 @@ Complete the sequence:
   - Select the `save-guestbook-entry-sequence` action
 - Scroll to the end of the page to Create the API. Make note of the provided route, as you will use it from your web application.
 
+- How extract from DB, hospital dashboard
+
 API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
 
-### Set up IBM Cloud App ID for authentication
+- App ID setup
 
-- The following link can be referred to enable user authentication in your application - [App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
+[App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
+->The following link can be referred to enable user authentication in your application.
 
 ### Setting up Model
 - Set up models - Python script for that
