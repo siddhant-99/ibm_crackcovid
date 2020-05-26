@@ -80,7 +80,7 @@ The file ***app.js*** creates an Authentication Strategy based on App ID. On a c
  
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
   <p align="center">
-  ![Identity Providers](extras/identiy_providers.png)
+  <img src = "extras/identiy_providers.png">
   </p>
 
 ### 2. Hospital Monitoring Database
