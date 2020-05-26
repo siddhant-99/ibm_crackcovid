@@ -98,11 +98,12 @@ A GET request is also made to the database to retrieve the data regarding hospit
 
 ### Integration of the web app with Google Maps Platform
 
+![Maps API Calls](extras/index_workflow.png)
 Based on the user input for a specific location, or by clicking on the More Details button, the location address string is retrieved and sent to the ***Geocoding API***, which finds the lattitude and longitude for the place. Then using the ***Directions API***, the shortest route to the location is found and displayed on the map. The ***Distance Matrix API*** finds the distance and duration of the travel time to reach the destination.
 
 ![Maps Platform](extras/maps_platform.png)
 
-![Maps API Calls](extras/index_workflow.png)
+
 
 ### Mask Detection Model 
 - Model Architecture
@@ -206,8 +207,93 @@ Change `video_path=` variable in the script to use your own video file, or direc
 ### Setting up the app
 - Step-by-step Cloudant setup
   
-[Cloudant setup](https://cloud.ibm.com/docs/solution-tutorials?topic=solution-tutorials-serverless-api-webapp)
-->Follow the procedure mentioned in the above article for two databases guestbook and maskbook. The actions for the IBM functions can be found in the [IBMActions](/IBMActions) folder.
+#### Create the Guestbook database
+
+Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data layer designed for modern web and mobile applications that leverages a flexible JSON schema. IBM Cloudant is built upon and compatible with Apache CouchDB and accessible through a secure HTTPS API, which scales as your application grows.
+
+- In the Catalog, select IBM Cloudant under Databases.
+  - Select a region.
+  - Pick a *unique name for the service, such as <yourinitials>-guestbook-db.
+  - Select a resource group.
+  - Select Use both legacy credentials and IAM as authentication method.
+  - Click Create.
+- Back in the IBM Cloud™ Resource List, click on the IBM Cloudant instance you created to open the instance full details page. Note: You may be required to wait until the status of the service changes to `Provisioned`.
+- Under Manage, click on Launch Cloudant Dashboard which will open in a new browser tab. Note: You may be asked to log into your Cloudant instance.
+- Click on Create Database and create a database named guestbook. Select Non-Partitioned under Partitioning.
+- Back to the service dashboard page, under Service credentials
+  - Create New credential.
+  - Set name to for-guestbook.
+  - Accept the other defaults and click Add.
+  - Expand the newly created credentials. We will need these credentials later to allow Cloud Functions actions to read/write to your Cloudant service.
+
+#### Create serverless actions
+In this section, you will create serverless actions (commonly termed as Functions). ***IBM Cloud™ Functions*** (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
+
+***Sequence of actions to save the guestbook entry***
+You will create a sequence which is a chain of actions where output of one action acts as an input to the following action and so on. The first sequence you will create is used to persist a guest message. Provided a name, an emailID and a comment, the sequence will:
+
+* Create a document to be persisted.
+* Store the document in the IBM Cloudant database.
+  
+Start by creating the first action:
+- Switch to Functions.
+- Select or create a namespace from the namespace drop-down on the top right.
+- On the left pane, click on Actions and then Create.
+- Create Action with name `prepare-entry-for-save` under Default Package and select Node.js as the Runtime (Note: Pick the latest version). Refer to [IBMActions](/IBMActions/prepare-entry-for-save.js) for code.
+- Click `Save`
+Then add the action to a sequence:
+- On the left pane, click on Enclosing Sequences and then Add To Sequence.
+- Set the Sequence name to save-guestbook-entry-sequence. Leave the Default Package.
+- Click Create and Add.
+Finally add a second action to the sequence:
+- Click on save-guestbook-entry-sequence and then click Add.
+- Select Use Public, Cloudant and then choose create-document under Actions.
+- Create New Binding.
+  - Set Name to binding-for-guestbook.
+  - Set Instance to Input your own credentials.
+  - Set Username, Password, Host and IAM API Key from the values found in the Cloudant credentials for-guestbook created earlier.
+  - Set Database to guestbook.
+  - Set whiskoverwriteLabel to true.
+- Click Save.
+
+***Sequence of actions to retrieve entries***
+
+The second sequence is used to retrieve the existing guestbook entries. This sequence will:
+* List all documents from the database.
+* Format the documents and returning them.
+
+- Under Functions, click on Actions and then Create a new Node.js action under Default Package and name it `set-read-input`.Refer to [IBMActions](/IBMActions/set-read-input.js) for code.
+- Click Save.
+Add the action to a sequence:
+- Click on Enclosing Sequences, Add to Sequence and Create New
+- Enter `read-guestbook-entries-sequence` for the Action Name and click Create and Add.
+Complete the sequence:
+- Click on read-guestbook-entries-sequence sequence and then click Add to create and add the second action to get documents from Cloudant.
+- Under Use Public, choose IBM Cloudant and then list-documents
+- Under My Bindings, choose binding-for-guestbook and Add to create and add this public action to your sequence.
+- Click Add again to create and add the third action which will format the documents from IBM Cloudant.
+- Under Create New enter format-entries for name and then click Create and Add.
+- Click on format-entries and refer to [IBMActions](/IBMActions/format-entries.js) for code.
+- Click on Save.
+- Choose the sequence by clicking on Actions and then read-guestbook-entries-sequence.
+- Click on Save.
+
+***Create an API***
+
+- Go to Actions.
+- Select the `read-guestbook-entries-sequence sequence`. Next to the name, click on Web Action, check Enable as Web Action and Save.
+- Do the same for the `save-guestbook-entry-sequence` sequence.
+- Go to APIs and Create API (or Create Managed API if you have existing APIs).
+- Set API name to guestbook and base path to /guestbook
+- Click on Create operation and create an operation to retrieve guestbook entries:
+  - Set path to `/entries`
+  - Set verb to `GET`
+  - Select the `read-guestbook-entries-sequence` action
+- Click on Create operation and create an operation to persist a guestbook entry:
+  - Set path to `/entries`
+  - Set verb to `PUT`
+  - Select the `save-guestbook-entry-sequence` action
+- Scroll to the end of the page to Create the API. Make note of the provided route, as you will use it from your web application.
 
 - How extract from DB, hospital dashboard
 
