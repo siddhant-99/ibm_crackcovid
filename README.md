@@ -297,8 +297,6 @@ Complete the sequence:
   - Select the `save-guestbook-entry-sequence` action
 - Scroll to the end of the page to Create the API. Make note of the provided route, as you will use it from your web application.
 
-- How extract from DB, hospital dashboard
-
 API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
 
 ### Set up IBM Cloud App ID for authentication
