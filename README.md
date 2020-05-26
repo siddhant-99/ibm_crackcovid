@@ -69,11 +69,11 @@ The application provides the user with a close real-time approximate of the numb
 ### 1. Authentication
 - Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
-**App ID by IBM** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
+***App ID by IBM*** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
 ![App ID Authentication](extras/appid_flow.png)
  
-The file **app.js** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of success redirects to `/dataentry.html`. From that page, a click on the logout button, initiates a call to `/appid/logout` and the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
+The file ***app.js*** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of success redirects to `/dataentry.html`. From that page, a click on the logout button, initiates a call to `/appid/logout` and the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
 
  ![Unauthorized Access](extras/unauthorsed_access.png)
  ![Authorized Access](extras/authorsed_access.png)
@@ -81,14 +81,13 @@ The file **app.js** creates an Authentication Strategy based on App ID. On a cal
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
 
   ![Identity Providers](extras/identiy_providers.png)
-- IBM cloudant for Hospital DB<br />
 
 ### 2. Hospital Monitoring Database
 IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
-The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the Submit button.
+The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the `Submit Details` button.
 
 ![Form for Hospitals](extras/form_details.png)
 
@@ -99,31 +98,30 @@ A GET request is also made to the database to retrieve the data regarding hospit
 ### Integration of the web app with Google Maps Platform
 
 ![Maps API Calls](extras/index_workflow.png)
-Based on the user input for a specific location, or by clicking on the More Details button, the location address string is retrieved and sent to the ***Geocoding API***, which finds the lattitude and longitude for the place. Then using the ***Directions API***, the shortest route to the location is found and displayed on the map. The ***Distance Matrix API*** finds the distance and duration of the travel time to reach the destination.
+When the user inputs a specific location in `Search for your destination` bar or clicks on the `More Details` button for a hospital, the location address string is retrieved and sent to the ***Geocoding API***, which finds the latitude and longitude for the place. Then using the ***Directions API***, the shortest route to the destination is computed and displayed on the map. The ***Distance Matrix API*** finds the distance and travel time required to reach the destination.
 
 ![Maps Platform](extras/maps_platform.png)
 
+### Prediction of Safety score with Mask Detection Model
 
+### 1. Architecture
 
-### Mask Detection Model 
-- Model Architecture
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
-- Input and Ouput (Image input, extrapolation to video below)
   
-The input is given in the form of a live videostream which is processed image frame by frame using OpenCV in Python.
-We used the structure of SSD. However, in order to make it run quickly on CCTV camera onboard computer, the backbone network is lite. 
+The model takes input in the form of a live videostream and processes it frame by frame using OpenCV in Python.
+We used the structure of SSD (Single Shot Detector). However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is lite. 
 
-The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. In total, the model has only 24 layers with the location and classification layers counted.
+The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
-### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
+### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
 ![Inferred Image](Test_Image_Mask.png)
-- How model takes video feeds
-- Predict score at equally separated frames and return avg safety score
+- How model takes video feeds and continuously looping
+- Predict score based on % of people wearing masks at equally separated frames (10 min feed) and return avg safety score and avg no of people
 
-### Integration of location-based Safety score with the Web App app
-- Using IBM Cloudant database
-Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score, lattitude and longitude of the camera to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region then the score associated with it is retrieved and then displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
+### Integration of location-based Safety score with the web application
+
+***IBM Cloudant*** is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score (based on % of people wearing masks), latitude and longitude of the camera location to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region, the score associated with it is retrieved and displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
 
 ![Safety Score](/extras/safety_score.png)
 
