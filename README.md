@@ -79,8 +79,9 @@ The file ***app.js*** creates an Authentication Strategy based on App ID. On a c
  ![Authorized Access](extras/authorsed_access.png)
  
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
-
+  <p align="center">
   ![Identity Providers](extras/identiy_providers.png)
+  </p>
 
 ### 2. Hospital Monitoring Database
 IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
