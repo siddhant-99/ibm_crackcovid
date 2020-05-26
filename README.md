@@ -24,7 +24,7 @@
 
 ### What's the problem?
 
-In times of crisis, there are multiple issues which affect the community and we're trying to solve a few of them. As the number of Covid-19 cases will continue to rise, the number of people seeking treatment will overwhelm many hospitals. Having a handle on local hospitals’ capacity and resource availability could help balance the load of Covid-19 patients requiring hospitalization across a region by allowing medical staff to send a patient to a facility where they are more likely to be treated quickly. But many states lack real-time data on their current capacity to treat Covid-19 patients. 
+In times of crisis, there are multiple issues which affect the community and we're trying to solve a few of them. As the number of Covid-19 cases continue to rise, the number of people seeking treatment will overwhelm many hospitals. Having a handle on local hospitals’ capacity and resource availability could help balance the load of Covid-19 patients requiring hospitalization across a region by allowing medical staff to send a patient to a facility where they are more likely to be treated quickly. But many states lack real-time data on their current capacity to treat Covid-19 patients. 
 
 Another issue we'll be witnessing with the relaxation of lockdown restrictions is when people will be stepping out to go to work, purchase essentials and carry out other activities. But, normalcy has not returned and the hesitation and fear of safety will still affect people when they think about stepping out. A live monitoring of the safety status of locations around people will help manage crowd and the safety scenario in an efficient manner.
 
@@ -32,8 +32,7 @@ Another issue we'll be witnessing with the relaxation of lockdown restrictions i
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
-A web application can help all - those have been affected as well as those who haven't been yet - by providing essential statistics and services that can make them aware of current scenario at different locations and aid them in selecting the best possible treatment available within their financial and personal constraints.
-(**Add about IBM services used in brief**)
+A web application can be designed to help everyone - those have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
 
 ## Video
 
@@ -57,12 +56,11 @@ Our solution aims to solve multiple issues posed by the Covid-19 crisis and if t
 ## The Idea
 With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. 
 
-Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of ventilators which can significantly help the patient reach the required resources as soon as possible.
+Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of ventilators which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
-For those people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
+For the people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
-The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and parks this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place.
-(**Add IBM cloudant database being used and other IBM services for this idea**)
+The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
 
 ## How it works
 
