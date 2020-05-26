@@ -90,7 +90,9 @@ IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database co
 
 The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the `Submit Details` button.
 
-![Form for Hospitals](extras/form_details.png)
+  <p align="center">
+  <img src = "extras/form_details.png">
+  </p>
 
 A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
 
@@ -100,8 +102,9 @@ A GET request is also made to the database to retrieve the data regarding hospit
 
 ![Maps API Calls](extras/index_workflow.png)
 When the user inputs a specific location in `Search for your Destination` bar or clicks on the `More Details` button for a hospital, the location address string is retrieved and sent to the ***Geocoding API***, which finds the latitude and longitude for the place. Then using the ***Directions API***, the shortest route to the destination is computed and displayed on the map. The ***Distance Matrix API*** finds the distance and travel time required to reach the destination.
-
-![Maps Platform](extras/maps_platform.png)
+  <p align="center">
+  <img src = "extras/maps_platform.png">
+  </p>
 ### Prediction of Safety score with Mask Detection Model
 
 ### 1. Architecture
