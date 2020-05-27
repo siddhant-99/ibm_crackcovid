@@ -337,7 +337,7 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
   
   5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
   
-  6) Sample Example for a single image is shown
+  6) Sample Example for a single image is shown(This can be left out if using for video)
   
   7) Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
   
