@@ -126,7 +126,8 @@ The model takes input in the form of a live videostream and processes it frame b
 ![Inferred Image](Test_Image_Mask.png)
 - The mask detector model is employed on the CCTV cameras installed througout the city. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
 This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
-Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric values calculated.
+
+Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated.
 This makes our solution even more lightweight and easily deployable.
 ![CCTV_Delhi](/extras/cct-770x433.png)
 
@@ -326,21 +327,21 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
 - IBM_video_script-mod.ipynb is the script for deploying the already trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository.
 -  The .ipynb notebook is made to run cell by cell-:
 
-  1)The necessary libraries and cloudant is imported
+  1) The necessary libraries and cloudant is imported
   
-  2)The service credentials for cloudant are added
+  2) The service credentials for cloudant are added
   
-  3)A new database is created on cloudant
+  3) A new database is created on cloudant
   
-  4)Getting the CCTV camera location by using Google Maps API
+  4) Getting the CCTV camera location by using Google Maps API
   
-  5)Here the inference function is defined on the frame extracted from video and the safety score is calculated
+  5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
   
-  6)Sample Example for a single image is shown
+  6) Sample Example for a single image is shown
   
-  7)Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
+  7) Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
   
-  8)Finally, all the data is compiled in form of a JSON doc and sent to **IBM Cloudant** for the user
+  8) Finally, all the data is compiled in form of a JSON doc and sent to **IBM Cloudant** for the user
   
 
 
