@@ -111,18 +111,19 @@ When the user inputs a specific location in `Search for your Destination` bar or
 ### Prediction of Safety score with Mask Detection Model
 
 ### 1. Architecture
+We used the structure of SSD (Single Shot Detector). However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
+It easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
+The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
+We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
   
 The model takes input in the form of a live videostream and processes it frame by frame using OpenCV in Python.
-We used the structure of SSD (Single Shot Detector). However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is lite. 
 
-The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
-We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
 ![Inferred Image](Test_Image_Mask.png)
-- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a lite model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
+- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
 This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
 Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric values calculated.
 This makes our solution even more lightweight and easily deployable.
@@ -323,6 +324,7 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
 ### Setting up Model
 - IBM_video_script-mod.ipynb is the script for deploying the already trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository.
 - The .ipynb notebook is made to run cell by cell-:
+
   1)The necessary libraries and cloudant is imported
   
   2)The service credentials for cloudant are added
@@ -331,7 +333,7 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
   
   4) Getting the CCTV camera location by using Google Maps API
   
-  5) Here the inference function is defined on the frame extracted from video and the corresponding safety score is calculated
+  5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
   
   6)Sample Example for a single image is shown
   
