@@ -134,7 +134,7 @@ The mask detection model can be employed on the CCTV cameras installed througout
 Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and avoids any privacy concerns which may arise due to uploading of live video feeds. This makes the solution even more lightweight and easily deployable.
 
 ***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
-A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below-:
+A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below.
 
   <p align="center"> 
   <img src="/extras/Workflow.png">
@@ -388,19 +388,19 @@ The API key created dialog displays your newly created API key.
 The new API key is listed on the Credentials page under API keys.
 (Remember to restrict the API key before using it in production.)
 
-### Set up the Mask Detection model for safety score prediction
+### Set up the Mask Detection model for Safety score prediction
 
-`IBM_video_script-mod.ipynb` is the python script for deploying the trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository. The .ipynb notebook is made to run cell by cell-:
+`IBM_video_script-mod.ipynb` is the python script for deploying the trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository. The .ipynb notebook is made to run cell by cell:
 
 - Import cloudant and other required python libraries 
-- Add the service credentials and establish a connection to theIBM Cloudant service instance
+- Add the service credentials and establish a connection to the IBM Cloudant service instance
 - Create a new database on cloudant
 - Get the latitude and longitude of the video camera location by using ***python-googlegeocoder*** library
 - Calculate the safety score (% of people wearing masks) using the inference function defined on the frame extracted from video 
-- Perform inference on live video stream at intervals of 10 minutes by calling inference function which calculates the safety score on individual frames
-- Finally, compile the required data including location information, no of people and safety score in the form of a JSON document and store it in ***IBM Cloudant*** database
+- `pytorch_inference` performs inference on the live video stream at intervals of 10 minutes by calling the function `inference` which calculates the safety score on individual frames
+- Finally, compile the required data including location information, no of people and safety score in the form of a JSON document and store it in the IBM Cloudant database created
 
-### Integrate location-based safety score with web application
+### Integrate location-based Safety score with web application
 
 Using the steps menioned above, another cloudant database `maskbook` is setup for recording the mask detection safety scores. Please refer to [IBMAction](/IBMAction) for the code.
 An API for a GET Request is setup in a similar fashion, and it is used to retrieve entries from the maskbook database based on the location entered by the user.
