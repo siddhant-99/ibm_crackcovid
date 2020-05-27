@@ -127,9 +127,11 @@ This saves us from the overhead of sending the entire video feed to the cloud an
 Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric values calculated.
 This makes our solution even more lightweight and easily deployable.
 ![CCTV_Delhi](/extras/cct-770x433.png)
-Safety score is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
-A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
 
+**Safety score** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
+A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
+The above workflow is summarized below-:
+![Workflow](/extras/Workflow.png)
 ### Integration of location-based Safety score with the web application
 
 ***IBM Cloudant*** is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score (based on % of people wearing masks), latitude and longitude of the camera location to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region, the score associated with it is retrieved and displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
