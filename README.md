@@ -332,9 +332,9 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
   
   3)A new database is created on cloudant
   
-  4) Getting the CCTV camera location by using Google Maps API
+  4)Getting the CCTV camera location by using Google Maps API
   
-  5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
+  5)Here the inference function is defined on the frame extracted from video and the safety score is calculated
   
   6)Sample Example for a single image is shown
   
