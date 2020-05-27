@@ -129,14 +129,16 @@ Thus, we have a classifier ready which adopts the following flow for mask detect
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score 
 
 ![Inferred Image](Test_Image_Mask.png)
-The mask detection model is employed on the CCTV cameras installed througout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
+The mask detection model can be employed on the CCTV cameras installed througout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
 
-Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and makes the solution even more lightweight and easily deployable.
+Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and avoids any privacy concerns which may arise due to uploading of live video feeds. This makes the solution even more lightweight and easily deployable.
 
-***Safety score*** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
-A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent. The above workflow is summarized in the flowchart below-:
+***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
+A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below-:
 
-![Workflow](/extras/Workflow.png)
+  <p align="centre">
+  <img src = "/extras/Workflow.png">
+  </p> 
 
 In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
 - - Training: Here we load our face mask detection dataset from disk, training a model using Pytorch on this dataset, and then serializing the face mask detector to disk
