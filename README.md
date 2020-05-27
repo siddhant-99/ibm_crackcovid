@@ -129,12 +129,12 @@ Thus, we have a classifier ready which adopts the following flow for mask detect
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score 
 
 ![Inferred Image](Test_Image_Mask.png)
-The mask detection model can be employed on the CCTV cameras installed througout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
+The mask detection model can be employed on the CCTV cameras installed throughout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
 
 Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and avoids any privacy concerns which may arise due to uploading of live video feeds. This makes the solution even more lightweight and easily deployable.
 
 ***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
-A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below:-
+A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Personal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below:-
 
   <p align="center"> 
   <img src="/extras/Workflow.png">
