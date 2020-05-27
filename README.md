@@ -35,7 +35,7 @@ A web application can be designed to help everyone - those who have been affecte
 
 ## Video
 
-[YouTube Demo Link](https://youtu.be/40jtde4xIQ4)
+[YouTube Demo Link](https://youtu.be/VMBCE-4vIIU)
  
 ## The Idea
 With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. 
