@@ -31,7 +31,7 @@ Another issue we'll be witnessing with the relaxation of lockdown restrictions i
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
-A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
+A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quickly as possible.
 
 ## Video
 
@@ -55,18 +55,18 @@ Our solution aims to solve multiple issues posed by the Covid-19 crisis and if t
 ## The Idea
 With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. 
 
-Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of **ventilators?** which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
+Our application provides a platform for the hospitals to share real-time statistics like number of beds available and presence of testing facilities which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 For the people who have not been infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
-The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks. Mask detection is performed using the live footage from a video camera installed there (CCTV camera, drones or any video camera system feasible depending on the location). This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
+The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks. Mask detection is performed using the live footage from a video camera installed there (CCTV camera, drones or any video camera system feasible depending on the location). This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient safety monitoring consequently avoiding overflow of people in places at any point of time.
+
 
 ## How it works
 
 ### Integration of Hospital Monitoring Database with the web application
 
 ### 1. Authentication
-- Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
 ***App ID by IBM*** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
@@ -83,7 +83,7 @@ The file ***app.js*** creates an Authentication Strategy based on App ID. On a c
   </p>
 
 ### 2. Hospital Monitoring Database
-IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
+***IBM's cloud-based service Cloudant*** is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
@@ -93,7 +93,7 @@ The details filled by the hospital post login, are sent to the guestbook databas
   <img src = "extras/form_details.png">
   </p>
 
-A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
+A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onboard*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
 
 ![Currently Onboard](extras/currently_onboard.png)
 
@@ -111,14 +111,14 @@ When the user inputs a specific location in `Search for your Destination` bar or
 
 ### 1. Architecture
 We used the structure of SSD (Single Shot Detector) Object Detector. However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
-It easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
+It is easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
 
-The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
+The total model has 1.01M parameters. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
 
-We apply face detection to compute the bounding box location of the face in the image. Once the faces in the image are detected, we can extract the Regions of Interest (ROI). The image shown below depicts that facial landmarks are used to localize and represent salient regions of the face, such as - Eyes, Eyebrows, Nose, Mouth and Jawline 
+We apply face detection to compute the bounding box location of the face in the image. Once the faces in the image are detected, we can extract the Regions of Interest (ROI). The image shown below depicts that facial landmarks are used to localize and represent salient regions of the face, such as - Eyes, Eyebrows, Nose, Mouth and Jawline.
 ![Face](/extras/facial_landmark.jpg)
 
 Leveraging these **facial landmarks**, the model learns as to which facial features are covered by mask and which are not.
@@ -129,18 +129,18 @@ Thus, we have a classifier ready which adopts the following flow for mask detect
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score 
 
 ![Inferred Image](Test_Image_Mask.png)
-The mask detection model can be employed on the CCTV cameras installed througout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
+The mask detection model can be employed on the CCTV cameras installed throughout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
 
 Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and avoids any privacy concerns which may arise due to uploading of live video feeds. This makes the solution even more lightweight and easily deployable.
 
 ***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
-A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below:-
+A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Personal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below:-
 
   <p align="center"> 
   <img src="/extras/Workflow.png">
   </p>
    
-In order to employ a face mask detector on video camera systems (CCTV cameras/drones), we characterize our project into two distinct phases, each with its own respective sub-steps:
+In order to deploy the model on video camera systems (CCTV cameras/drones), we characterize the process into two distinct phases, each with its own respective sub-steps:
 
 - **Training**: Here the face mask detection dataset is loaded from disk, the model is trained using Pytorch on this dataset, and then the face mask detector is serialized to disk
 - **Deployment**: Once the face mask detector is trained, we can move on to loading the mask detector, performing face detection, and then classifying each face as ***with_mask*** or ***without_mask***. Finally, we calculate the safety score based on this prediction and send data to ***IBM Cloudant***
