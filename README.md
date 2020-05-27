@@ -55,7 +55,7 @@ Our solution aims to solve multiple issues posed by the Covid-19 crisis and if t
 ## The Idea
 With the rapid spread of COVID-19 it has become increasingly difficult for the patients who test positive to be accommodated in the treatment centers. Often the treatment centers have no availability of beds and are already working at full capacity, which leads to inefficiency and confusion in communication while transferring patients from a COVID-testing facility to these treatment centres, leading to a risk of life. 
 
-Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of **ventilators?** which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
+Our application provides a platform for the hospitals to share real-time statistics like number of beds available and presence of testing facilities which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 For the people who have not been infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
@@ -83,7 +83,7 @@ The file ***app.js*** creates an Authentication Strategy based on App ID. On a c
   </p>
 
 ### 2. Hospital Monitoring Database
-***IBM's cloud-based service Cloudant*** is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
+***IBM's cloud-based service Cloudant*** is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
