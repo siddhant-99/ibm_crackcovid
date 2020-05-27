@@ -391,3 +391,6 @@ Using the steps menioned above, another cloudant database `maskbook` is setup fo
 An API for a GET Request is setup in a similar fashion, and it is used to retrieve entries from the maskbook database based on the location entered by the user.
 
 ## License
+MIT License
+
+Copyright (c) 2020 Team Regression
