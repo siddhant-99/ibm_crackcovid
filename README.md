@@ -1,4 +1,4 @@
-# IBM Crak the Covid-19 Crisis Hackathon : TEAM REGRESSION
+# IBM Crack the Covid-19 Crisis Hackathon : TEAM REGRESSION
  Web application solution aimed to deal with multifaceted problems posed by the Covid-19 Crisis.
  
 ## Authors
@@ -343,7 +343,7 @@ Complete the sequence:
 
 - Refer to [app.js](/app.js) for initialising the NodeJS SDK and setting up redirects and callback reqyests.
 
-### Connect Google Maps APIs for location
+### Integrate web application with Google Maps Platform 
 
 Google Maps Platform is a set of APIs and SDKs that are managed from the Google Cloud Platform Console (also referred to as the Cloud Console). To get started with Google Maps Platform you need to:
 
@@ -396,13 +396,13 @@ The new API key is listed on the Credentials page under API keys.
 - Add the service credentials and establish a connection to theIBM Cloudant service instance
 - Create a new database on cloudant
 - Get the latitude and longitude of the video camera location by using ***python-googlegeocoder*** library
-- Calculate the safety score using the inference function defined on the frame extracted from video 
-- Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
-- Finally, all the data is compiled in form of a JSON document and sent to ***IBM Cloudant*** database
+- Calculate the safety score (% of people wearing masks) using the inference function defined on the frame extracted from video 
+- Perform inference on live video stream at intervals of 10 minutes by calling inference function which calculates the safety score on individual frames
+- Finally, compile the required data including location information, no of people and safety score in the form of a JSON document and store it in ***IBM Cloudant*** database
 
-### Send score data to IBM cloudant DB and retrieve from there for app
+### Integrate location-based safety score with web application
 
-Using the steps menioned above, another cloudant database `maskbook` is setup fro recording the mnask detection safety scores. Please refer to [IBMAction](/IBMAction) for the code.
+Using the steps menioned above, another cloudant database `maskbook` is setup for recording the mask detection safety scores. Please refer to [IBMAction](/IBMAction) for the code.
 An API for a GET Request is setup in a similar fashion, and it is used to retrieve entries from the maskbook database based on the location entered by the user.
 
 ## License
