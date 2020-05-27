@@ -94,7 +94,7 @@ The details filled by the hospital post login, are sent to the guestbook databas
   <img src = "extras/form_details.png">
   </p>
 
-A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
+A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onboard*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
 
 ![Currently Onboard](extras/currently_onboard.png)
 
