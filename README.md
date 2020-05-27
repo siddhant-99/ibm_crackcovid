@@ -203,9 +203,10 @@ Change `video_path=` variable in the script to use your own video file, or direc
 
 - Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-communication_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account
 - Download [node.js](https://nodejs.org/en/)
+- Install the dependecies for Node.Js
 
-### Setting up the app
-- Step-by-step Cloudant setup
+## Setting up the app
+### Step-by-step Cloudant setup
   
 #### Create the Guestbook database
 
@@ -213,7 +214,7 @@ Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data lay
 
 - In the Catalog, select IBM Cloudant under Databases.
   - Select a region.
-  - Pick a *unique name for the service, such as <yourinitials>-guestbook-db.
+  - Pick a unique name for the service, such as `<yourinitials>`-guestbook-db.
   - Select a resource group.
   - Select Use both legacy credentials and IAM as authentication method.
   - Click Create.
@@ -296,14 +297,32 @@ Complete the sequence:
   - Select the `save-guestbook-entry-sequence` action
 - Scroll to the end of the page to Create the API. Make note of the provided route, as you will use it from your web application.
 
-- How extract from DB, hospital dashboard
 
-API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
+### App ID setup
+- Obtain your credentials in one of the following ways.
+  - By navigating to the Applications tab of the App ID dashboard. If you don't have an application in the list, you can click Add application to create a one.
+  - By making a POST request to the /management/v4/{tenantId}/applications endpoint.
 
-- App ID setup
+*Request format:*
 
-[App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
-->The following link can be referred to enable user authentication in your application.
+
+`curl -X POST \  https://us-south.appid.cloud.ibm.com/management/v4/39a37f57-a227-4bfe-a044-93b6e6060b61/applications/ \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer <IAM_TOKEN>' \
+-d '{"name": "ApplicationName"}'`
+
+*Example response:*
+
+``{
+"clientId": "111c22c3-38ea-4de8-b5d4-338744d83b0f",
+"tenantId": "39a37f57-a227-4bfe-a044-93b6e6060b61",
+"secret": "ZmE5ZDQ5ODctMmA1ZS00OGRiLWExZDMtZTA1MjkyZTc4MDB4",
+"name": "ApplicationName",
+"oAuthServerUrl": "https://us-south.appid.cloud.ibm.com/oauth/v4/39a37f57-a227-4bfe-a044-93b6e6060b61"
+}``
+
+- Refer to [app.js](/app.js) for initialising the NodeJS SDK and setting up redirects and callback reqyests.
+
 
 ### Setting up Model
 - Set up models - Python script for that
