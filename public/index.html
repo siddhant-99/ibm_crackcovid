@@ -315,11 +315,13 @@
 
                   console.log(PeopleScore_user);
                   console.log(safetyScore_user);
+                  $("#people_info").text(PeopleScore_user);
+                  $("#scoreInfo").text(safetyScore_user);
+                  break;
                 }
               }
 
-              $("#people_info").text(PeopleScore_user);
-              $("#scoreInfo").text(safetyScore_user);
+              
             }
               infoWindow.close(map);
               calculateAndDisplayRoute(
