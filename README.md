@@ -140,9 +140,9 @@ A 10 minute interval is selected to give the user a fair idea about the area he/
   <img src="/extras/Workflow.png">
   </p>
    
-In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
+In order to employ a face mask detector on video camera systems (CCTV cameras/drones), we characterize our project into two distinct phases, each with its own respective sub-steps:
 
-- **Training**: Here we the face mask detection dataset is loaded from disk, the model is trained using Pytorch on this dataset, and then the face mask detector is serialized to disk
+- **Training**: Here the face mask detection dataset is loaded from disk, the model is trained using Pytorch on this dataset, and then the face mask detector is serialized to disk
 - **Deployment**: Once the face mask detector is trained, we can move on to loading the mask detector, performing face detection, and then classifying each face as ***with_mask*** or ***without_mask***. Finally, we calculate the safety score based on this prediction and send data to ***IBM Cloudant***
 
 ### Integration of location-based Safety score with the web application
