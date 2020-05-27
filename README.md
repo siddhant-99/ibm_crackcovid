@@ -32,7 +32,7 @@ Another issue we'll be witnessing with the relaxation of lockdown restrictions i
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
-A web application can be designed to help everyone - those have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
+A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
 
 ## Video
 
@@ -58,7 +58,7 @@ With the rapid spread of COVID-19 it has become increasingly difficult for the p
 
 Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of **ventilators?** which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
-For the people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
+For the people who have not been infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
 The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
 
@@ -69,61 +69,85 @@ The application provides the user with a close real-time approximate of the numb
 ### 1. Authentication
 - Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
-**App ID by IBM** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
+***App ID by IBM*** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
 ![App ID Authentication](extras/appid_flow.png)
  
-The file **app.js** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of success redirects to `/dataentry.html`. From that page, a click on the logout button, initiates a call to `/appid/logout` and the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
+The file ***app.js*** creates an Authentication Strategy based on App ID. On a call to `/appid/login`  it goes on the authentication page, and in case of success redirects to `/dataentry.html`. From that page, a click on the logout button, initiates a call to `/appid/logout` and the user is again directed to `/index.html`. A successful login also sends a response via `/api/user` which contains the user's name and the login ID. The username and ID information is also stored along with hospital data to identify the user who filled the data, and hence enable the user to update the records for the same hospital in the future.(Update Feature - Partial Implementation).
 
  ![Unauthorized Access](extras/unauthorsed_access.png)
  ![Authorized Access](extras/authorsed_access.png)
  
   IBM Cloud ID, Login via Google and Login via Facebook have been set as Identity Service Providers.
-
-  ![Identity Providers](extras/identiy_providers.png)
-- IBM cloudant for Hospital DB<br />
+  <p align="center">
+  <img src = "extras/identiy_providers.png">
+  </p>
 
 ### 2. Hospital Monitoring Database
 IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
-The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the Submit button.
+The details filled by the hospital post login, are sent to the guestbook database (Hospital Monitoring Database) on click of the `Submit Details` button.
 
-![Form for Hospitals](extras/form_details.png)
+  <p align="center">
+  <img src = "extras/form_details.png">
+  </p>
 
 A GET request is also made to the database to retrieve the data regarding hospitals onboard which is displayed on the ***Currently Onbaord*** tab of the web app. On clicking the `More Details` button, all the details for the particular hospital are retrieved and made visible to the user.
 
 ![Currently Onboard](extras/currently_onboard.png)
 
-### Integration of the web app with Google Maps Platform
+### Integration of the web application with Google Maps Platform
 
-![Maps API Calls](extras/index_workflow.png)
-Based on the user input for a specific location, or by clicking on the More Details button, the location address string is retrieved and sent to the ***Geocoding API***, which finds the lattitude and longitude for the place. Then using the ***Directions API***, the shortest route to the location is found and displayed on the map. The ***Distance Matrix API*** finds the distance and duration of the travel time to reach the destination.
+  <p align="centre">
+  <img src = "extras/index_workflow.png">
+  </p> 
+  
+When the user inputs a specific location in `Search for your Destination` bar or clicks on the `More Details` button for a hospital, the location address string is retrieved and sent to the ***Geocoding API***, which finds the latitude and longitude for the place. Then using the ***Directions API***, the shortest route to the destination is computed and displayed on the map. The ***Distance Matrix API*** finds the distance and travel time required to reach the destination.
 
 ![Maps Platform](extras/maps_platform.png)
+ 
+### Prediction of Safety score with Mask Detection Model
 
+### 1. Architecture
+We used the structure of SSD (Single Shot Detector) Object Detector. However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
+It easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
 
-
-### Mask Detection Model 
-- Model Architecture
-![Architecture](/load_model/face_mask_detection.caffemodel.png)
-- Input and Ouput (Image input, extrapolation to video below)
-  
-The input is given in the form of a live videostream which is processed image frame by frame using OpenCV in Python.
-We used the structure of SSD. However, in order to make it run quickly on CCTV camera onboard computer, the backbone network is lite. 
-
-The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. In total, the model has only 24 layers with the location and classification layers counted.
+The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
-### Integration of live Video feed and Mask Detection model to predict Safety score (Honnesh + Jivat)
-![Inferred Image](Test_Image_Mask.png)
-- How model takes video feeds
-- Predict score at equally separated frames and return avg safety score
+![Architecture](/load_model/face_mask_detection.caffemodel.png)
 
-### Integration of location-based Safety score with the Web App app
-- Using IBM Cloudant database
-Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score, lattitude and longitude of the camera to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region then the score associated with it is retrieved and then displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
+  We apply face detection to compute the bounding box location of the face in the image.
+  As we know where the face is, now we can extract the Region of Interest(RoI). Then,
+- Facial landmarks are used to localize and represent salient regions of the face, such as:
+Eyes, Eyebrows, Nose, Mouth and Jawline 
+![Face](/extras/facial_landmark.jpg)
+
+- Leveraging these **facial landmarks**, the model learns as to which facial features are covered by mask and which are not.
+Thus, we have a classifier ready which takes an input image -> detects faces -> detects ROI -> Uses Facial Landmarks to Localize -> Classifies as **mask** or **no_mask**
+
+
+### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
+![Inferred Image](Test_Image_Mask.png)
+- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
+This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
+
+Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated.
+This makes our solution even more lightweight and easily deployable.
+
+- **Safety score** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
+A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
+- The above workflow is summarized below-:
+![Workflow](/extras/Workflow.png)
+
+In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
+- - Training: Here we load our face mask detection dataset from disk, training a model using Pytorch on this dataset, and then serializing the face mask detector to disk
+- - Deployment: Once the face mask detector is trained, we can then move on to loading the mask detector, performing face detection, and then classifying each face as with_mask or without_mask. Finally, we calculate safety score using this info and send data to ***IBM Cloudant***
+### Integration of location-based Safety score with the web application
+
+***IBM Cloudant*** is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score (based on % of people wearing masks), latitude and longitude of the camera location to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region, the score associated with it is retrieved and displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
 
 ![Safety Score](/extras/safety_score.png)
 
@@ -205,11 +229,7 @@ Change `video_path=` variable in the script to use your own video file, or direc
 - Download [node.js](https://nodejs.org/en/)
 - Install the dependecies for Node.Js
 
-## Setting up the app
-### Step-by-step Cloudant setup
-  
-#### Create the Guestbook database
-
+### Create the Guestbook database using an IBM Cloudant instance
 Let's start by creating a IBM Cloudant. IBM Cloudant is a fully managed data layer designed for modern web and mobile applications that leverages a flexible JSON schema. IBM Cloudant is built upon and compatible with Apache CouchDB and accessible through a secure HTTPS API, which scales as your application grows.
 
 - In the Catalog, select IBM Cloudant under Databases.
@@ -325,8 +345,26 @@ Complete the sequence:
 
 
 ### Setting up Model
-- Set up models - Python script for that
-- Video pre-processing
+- IBM_video_script-mod.ipynb is the script for deploying the already trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository.
+-  The .ipynb notebook is made to run cell by cell-:
+
+  1) The necessary libraries and cloudant is imported
+  
+  2) The service credentials for cloudant are added
+  
+  3) A new database is created on cloudant
+  
+  4) Getting the CCTV camera location by using Google Maps API
+  
+  5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
+  
+  6) Sample Example for a single image is shown(This can be left out if using for video)
+  
+  7) Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
+  
+  8) Finally, all the data is compiled in form of a JSON doc and sent to **IBM Cloudant** for the user
+  
+
 
 ### Connect Google Maps APIs for location
 
