@@ -136,8 +136,8 @@ Instead of processing the video stream on cloud, we are leveraging the edge comp
 ***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
 A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below-:
 
+  ![Workflow](/extras/Workflow.png?style=centerme)
   
-  <align="right" img src = "/extras/Workflow.png">
   
 In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
 
