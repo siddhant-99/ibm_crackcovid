@@ -67,7 +67,6 @@ The application provides the user with a close real-time approximate of the numb
 ### Integration of Hospital Monitoring Database with the web application
 
 ### 1. Authentication
-- Hospital Dashboard Login (Insert screenshot with hospital db login button)
 
 ***App ID by IBM*** is used to monitor authentication for the login procedure in the app. Only hospitals will be authorised to input data into the form at dataentry.html. If an unauthorised person does so, an alert message shows up and the user is prompted to login. Their input will not be recorded until they are authorised. The workflow for the App ID looks as follows:-
 
@@ -112,14 +111,14 @@ When the user inputs a specific location in `Search for your Destination` bar or
 
 ### 1. Architecture
 We used the structure of SSD (Single Shot Detector) Object Detector. However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
-It easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
+It is easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
 
-The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
+The total model has 1.01M parameters. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
 
-We apply face detection to compute the bounding box location of the face in the image. Once the faces in the image are detected, we can extract the Regions of Interest (ROI). The image shown below depicts that facial landmarks are used to localize and represent salient regions of the face, such as - Eyes, Eyebrows, Nose, Mouth and Jawline 
+We apply face detection to compute the bounding box location of the face in the image. Once the faces in the image are detected, we can extract the Regions of Interest (ROI). The image shown below depicts that facial landmarks are used to localize and represent salient regions of the face, such as - Eyes, Eyebrows, Nose, Mouth and Jawline.
 ![Face](/extras/facial_landmark.jpg)
 
 Leveraging these **facial landmarks**, the model learns as to which facial features are covered by mask and which are not.
