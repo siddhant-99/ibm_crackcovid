@@ -111,8 +111,9 @@ When the user inputs a specific location in `Search for your Destination` bar or
 ### Prediction of Safety score with Mask Detection Model
 
 ### 1. Architecture
-We used the structure of SSD (Single Shot Detector). However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
+We used the structure of SSD (Single Shot Detector) Object Detector. However, to enable inference on the device integrated with the CCTV camera with minimum latency, the backbone network is light. 
 It easier to deploy the model to embedded systems (Raspberry Pi, Google Coral, Jetson, Nano, etc.).
+
 The total model has 1.01M parametes. Input size of the model is 260x260, the backbone network has 8 conv layers. Overall, the model has 24 layers with the location and classification layers included.
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
@@ -323,7 +324,7 @@ API is setup for the sequences used to save and retrieve data from cloudant. Sim
 
 ### Setting up Model
 - IBM_video_script-mod.ipynb is the script for deploying the already trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository.
-- The .ipynb notebook is made to run cell by cell-:
+-  The .ipynb notebook is made to run cell by cell-:
 
   1)The necessary libraries and cloudant is imported
   
