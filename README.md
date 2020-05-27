@@ -84,7 +84,7 @@ The file ***app.js*** creates an Authentication Strategy based on App ID. On a c
   </p>
 
 ### 2. Hospital Monitoring Database
-IBM's cloud-service Cloudant is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
+***IBM's cloud-based service Cloudant*** is used to host the Hospital Monitoring Database containing real-time statistics on the presence of covid-19 test facility and number of beds and **ventilators?** available. Cloudant is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
 ![Hospital Dashboard(dataentry.html)](/extras/guestbook.png)
 
