@@ -32,7 +32,7 @@ Another issue we'll be witnessing with the relaxation of lockdown restrictions i
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
-A web application can be designed to help everyone - those have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
+A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
 
 ## Video
 
@@ -58,7 +58,7 @@ With the rapid spread of COVID-19 it has become increasingly difficult for the p
 
 Our application provides a platform for the hospitals to share real-time statistics like number of beds available, presence of testing facilities and number of **ventilators?** which can significantly help the patient reach the required resources as soon as possible. The data is stored on a hospital monitoring database hosted on IBM's cloud-based service, Cloudant which is used to setup a NoSQL Database which then can be used with a serverless web application. 
 
-For the people who have not been not infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
+For the people who have not been infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
 The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
 
@@ -321,11 +321,9 @@ Complete the sequence:
   - Select the `save-guestbook-entry-sequence` action
 - Scroll to the end of the page to Create the API. Make note of the provided route, as you will use it from your web application.
 
-- How extract from DB, hospital dashboard
-
 API is setup for the sequences used to save and retrieve data from cloudant. Simple PUT and GET requests are then issued from the node js application to perfrom the desired actions.
 
-- App ID setup
+### Set up IBM Cloud App ID for authentication
 
 [App ID Setup](https://cloud.ibm.com/docs/appid?topic=appid-web-apps)
 ->The following link can be referred to enable user authentication in your application.
