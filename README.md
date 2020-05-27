@@ -136,9 +136,10 @@ Instead of processing the video stream on cloud, we are leveraging the edge comp
 ***Safety score*** is calculated as the percentage of people wearing masks in a given frame. The live video feed is taken as input in intervals of 10 minutes and a corresponding safety score is output for each interval by averaging the safety score over all the frames.
 A 10 minute interval is selected to give the user a fair idea about the area he/she is planning to visit during that time. Thus, this will help us as a society, be prepared to handle the situation better by delaying outdoor visits if they are not urgent or taking necessary precautions and increasing Peronal Protective equipment (PPE) otherwise. The workflow described is summarized in the flowchart below-:
 
-  ![Workflow](/extras/Workflow.png?style=centerme)
-  
-  
+  <p align="center"> 
+  <img src="/extras/Workflow.png">
+  </p>
+   
 In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
 
 - **Training**: Here we the face mask detection dataset is loaded from disk, the model is trained using Pytorch on this dataset, and then the face mask detector is serialized to disk
@@ -342,29 +343,6 @@ Complete the sequence:
 
 - Refer to [app.js](/app.js) for initialising the NodeJS SDK and setting up redirects and callback reqyests.
 
-
-### Setting up Model
-- IBM_video_script-mod.ipynb is the script for deploying the already trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository.
--  The .ipynb notebook is made to run cell by cell-:
-
-  1) The necessary libraries and cloudant is imported
-  
-  2) The service credentials for cloudant are added
-  
-  3) A new database is created on cloudant
-  
-  4) Getting the CCTV camera location by using Google Maps API
-  
-  5) Here the inference function is defined on the frame extracted from video and the safety score is calculated
-  
-  6) Sample Example for a single image is shown(This can be left out if using for video)
-  
-  7) Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
-  
-  8) Finally, all the data is compiled in form of a JSON doc and sent to **IBM Cloudant** for the user
-  
-
-
 ### Connect Google Maps APIs for location
 
 Google Maps Platform is a set of APIs and SDKs that are managed from the Google Cloud Platform Console (also referred to as the Cloud Console). To get started with Google Maps Platform you need to:
@@ -409,6 +387,18 @@ The API key created dialog displays your newly created API key.
   - Click Close.<br>
 The new API key is listed on the Credentials page under API keys.
 (Remember to restrict the API key before using it in production.)
+
+### Set up the Mask Detection model for safety score prediction
+
+`IBM_video_script-mod.ipynb` is the python script for deploying the trained face mask classifier.The Pytorch model(model360.pth) is stored in the models folder in our repository. The .ipynb notebook is made to run cell by cell-:
+
+- Import cloudant and other required python libraries 
+- Add the service credentials and establish a connection to theIBM Cloudant service instance
+- Create a new database on cloudant
+- Get the latitude and longitude of the video camera location by using ***python-googlegeocoder*** library
+- Calculate the safety score using the inference function defined on the frame extracted from video 
+- Inferering the model on entire video given by live CCTV camera in 10 minute interval and inference function is called on  frame extracted from the video 
+- Finally, all the data is compiled in form of a JSON document and sent to ***IBM Cloudant*** database
 
 ### Send score data to IBM cloudant DB and retrieve from there for app
 
