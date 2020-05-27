@@ -59,7 +59,7 @@ Our application provides a platform for the hospitals to share real-time statist
 
 For the people who have not been infected yet, the most worrying concern is the ground situation of the places that they are planning to visit. Once the lockdown gets lifted, huge numbers of people would take to the streets and the risk of the uncontrolled spread of virus is unfathomable. 
 
-The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks, using the live footage from CCTV cameras installed there. This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
+The application provides the user with a close real-time approximate of the number of people present at any given location, which helps the user make an aware decision. With the help of deep learning, a mask detection model is also trained and integrated with the app which calculates the safety score of a place based on the percentage of people wearing masks. Mask detection is performed using the live footage from a video camera installed there(CCTV camera, drones or any video camera system feasible depending on the location). This ratio is extremely essential as it gives an idea to the user about the level of risk he/she might take. For publicly crowded places like markets and shopping centres, this application is furthermore crucial as the safety score can clearly convey the peril of visiting the place and allow efficient social distancing management, safety monitoring and will be helpful in avoiding overflow of people in places at any point of time.
 
 ## How it works
 
@@ -126,17 +126,16 @@ Thus, we have a classifier ready which adopts the following flow for mask detect
 - Take an input image -> Detect faces -> Detect ROI -> Use Facial Landmarks to Localize -> Classify as ***mask*** or ***no_mask***
 
 
-### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
+### 2. Integration of live Video feed with Mask Detection model to predict Safety score 
+
 ![Inferred Image](Test_Image_Mask.png)
-- The mask detector model is employed on the CCTV cameras installed througout the city. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer.
-This saves us from the overhead of sending the entire video feed to the cloud and processing it there. 
+The mask detection model is employed on the CCTV cameras installed througout the city. For the locations with no CCTV cameras in place, the model can be integrated with drones. As it is a light model with less number of parameters, live video stream captured can be directly inferenced on the connected computer or system.
 
-Instead, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated.
-This makes our solution even more lightweight and easily deployable.
+Instead of processing the video stream on cloud, we are leveraging the edge computing facilities already available with the camera and sending only the corresponding numeric metrics calculated. This saves us from the overhead of sending the entire video feed to the cloud and makes the solution even more lightweight and easily deployable.
 
-- **Safety score** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
-A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
-- The above workflow is summarized below-:
+***Safety score*** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
+A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent. The above workflow is summarized in the flowchart below-:
+
 ![Workflow](/extras/Workflow.png)
 
 In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
