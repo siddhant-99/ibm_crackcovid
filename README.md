@@ -368,6 +368,49 @@ Complete the sequence:
 
 ### Connect Google Maps APIs for location
 
+Google Maps Platform is a set of APIs and SDKs that are managed from the Google Cloud Platform Console (also referred to as the Cloud Console). To get started with Google Maps Platform you need to:
+
+- Create a billing account
+  - Go to the Google Cloud Platform Console.
+  - Click the menu button  and select Billing.
+  - Set up your billing account.
+  - If this is your first billing account, on the Billing page:
+    - Click the Add billing account button.
+    - Follow the steps to set up your first billing account.
+  - If you already have a billing account, on the Billing page:
+    - Click the billing drop-down and select Manage billing accounts.
+    - You'll see a list of your current billing accounts.
+    - Select Create account
+    - Follow the instructions to set up your next billing account. 
+- Create a project
+  - Go to the Google Cloud Platform Console.
+  - Click the menu button  and select Home.
+  - Click the project drop-down and select NEW PROJECT.
+  - On the New Project page, fill in the required information.
+    - *Project name*: Accept the default or enter a customized name.
+    - *Project ID*: Accept the default or click EDIT to enter a customized ID.
+    - *Billing account*: Select a billing account for the project (if you only have one billing account, you won't see this option).
+    - *Location*: If you have an organization you want to link your project to, click Browse and select it, otherwise choose "No organization".
+  - Click **CREATE**
+- Enable the following APIs
+  - Go to the Google Cloud Platform Console.
+  - Click the menu button  and select APIs & Services > Library.
+  - On the API Library page, locate Maps and click VIEW ALL (15).
+  - On the Maps page, click the following APIs to enable.
+    - Maps JavaScript API
+    - Geocoding API
+    - Distance Matrix API
+    - Directions API 
+- Get, add, and restrict an API key
+  - Go to the Google Cloud Platform Console.
+  - Click the project drop-down and select or create the project for which you want to add an API key.
+  - Click the menu button  and select APIs & Services > Credentials.
+  - On the Credentials page, click Create credentials > API key.<br>
+The API key created dialog displays your newly created API key.
+  - Click Close.<br>
+The new API key is listed on the Credentials page under API keys.
+(Remember to restrict the API key before using it in production.)
+
 ### Send score data to IBM cloudant DB and retrieve from there for app
 
 ## License
