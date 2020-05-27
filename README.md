@@ -413,4 +413,7 @@ The new API key is listed on the Credentials page under API keys.
 
 ### Send score data to IBM cloudant DB and retrieve from there for app
 
+Using the steps menioned above, another cloudant database `maskbook` is setup fro recording the mnask detection safety scores. Please refer to [IBMAction](/IBMAction) for the code.
+An API for a GET Request is setup in a similar fashion, and it is used to retrieve entries from the maskbook database based on the location entered by the user.
+
 ## License
