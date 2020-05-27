@@ -31,7 +31,7 @@ Another issue we'll be witnessing with the relaxation of lockdown restrictions i
 
 Technological advancement with a blend of machine learning, software development and connectivity through applications can equip the mankind with abilities to fare through this pandemic in a safer and smarter way. 
 
-A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quicky as possible.
+A web application can be designed to help everyone - those who have been affected as well as those who haven't been yet. Providing the people essential statistics and services can make them aware of the current safety scenario at different locations. For the patients, real-time statistics of hospital capacity and other resources stored on the IBM Cloudant database can aid them in reaching to the best possible treatment as quickly as possible.
 
 ## Video
 
