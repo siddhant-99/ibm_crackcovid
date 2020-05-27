@@ -128,9 +128,9 @@ Instead, we are leveraging the edge computing facilities already available with 
 This makes our solution even more lightweight and easily deployable.
 ![CCTV_Delhi](/extras/cct-770x433.png)
 
-**Safety score** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
+- **Safety score** is calculated as percentage of people wearing mask in a given image frame. The live video feed is divided into 10 minutes interval and a corresponding safety score is provided for each interval by averaging the safety score over all the frames.
 A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
-The above workflow is summarized below-:
+- The above workflow is summarized below-:
 ![Workflow](/extras/Workflow.png)
 ### Integration of location-based Safety score with the web application
 
