@@ -132,9 +132,10 @@ This makes our solution even more lightweight and easily deployable.
 A 10 minute interval is taken to give a general idea about the area which we are planning to visit beforehand. Thus, this will help us be prepared to handle the situation better and take necessary precautions and increase our PPE if required or delay our visit if not urgent.
 - The above workflow is summarized below-:
 ![Workflow](/extras/Workflow.png)
+
 In order to train a face mask detector on CCTV cameras, we characterize our project into two distinct phases, each with its own respective sub-steps:
-- Training: Here we load our face mask detection dataset from disk, training a model using Pytorch on this dataset, and then serializing the face mask detector to disk
-- Deployment: Once the face mask detector is trained, we can then move on to loading the mask detector, performing face detection, and then classifying each face as with_mask or without_mask. Finally, we calculate safety score using this info and send data to **IBM Cloudant**
+- - Training: Here we load our face mask detection dataset from disk, training a model using Pytorch on this dataset, and then serializing the face mask detector to disk
+- - Deployment: Once the face mask detector is trained, we can then move on to loading the mask detector, performing face detection, and then classifying each face as with_mask or without_mask. Finally, we calculate safety score using this info and send data to **IBM Cloudant**
 ### Integration of location-based Safety score with the web application
 
 ***IBM Cloudant*** is used to setup a NoSQL Database which then can be used with a serverless web application. The Python script uploads data points such as no of people in the camera feed, safety score (based on % of people wearing masks), latitude and longitude of the camera location to the Cloudant mapbook database. The data is retrieved via a GET request, and then based on the user's location entry in the input bar, the database is searched for an entry. If a camera feed is found in the region, the score associated with it is retrieved and displayed to the user. The web app also keeps a track of the average score in all the places that are being monitored.
