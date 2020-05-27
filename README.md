@@ -119,14 +119,14 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
 
-  We apply face detection to compute the bounding box location of the face in the image. Then,
-  
+  We apply face detection to compute the bounding box location of the face in the image.
+  As we know where the face is, now we can extract the Region of Interest(RoI). Then,
 - Facial landmarks are used to localize and represent salient regions of the face, such as:
 Eyes, Eyebrows, Nose, Mouth and Jawline 
 ![Face](/extras/facial_landmark.jpg)
 
-
-The model takes input in the form of a live videostream and processes it frame by frame using OpenCV in Python.
+- Leveraging these **facial landmarks**, the model learns as to which facial features are covered by mask and which are not.
+Thus, we have a classifier ready which takes an input image -> detects faces -> detects ROI -> Uses Facial Landmarks to Localize -> Classifies as **mask** or **no_mask**
 
 
 ### 2. Integration of live Video feed with Mask Detection model to predict Safety score (Honnesh + Jivat)
