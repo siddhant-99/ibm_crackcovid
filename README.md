@@ -118,9 +118,11 @@ The total model has 1.01M parametes. Input size of the model is 260x260, the bac
 We merge the BatchNormalization to Conv layers in order to accelerate the inference speed.
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
+
+  We apply face detection to compute the bounding box location of the face in the image. Then,
   
 - Facial landmarks are used to localize and represent salient regions of the face, such as:
-Eyes Eyebrows Nose Mouth Jawline 
+Eyes, Eyebrows, Nose, Mouth and Jawline 
 ![Face](/extras/facial_landmark.jpg)
 
 
