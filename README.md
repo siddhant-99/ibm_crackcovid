@@ -119,6 +119,11 @@ We merge the BatchNormalization to Conv layers in order to accelerate the infere
 
 ![Architecture](/load_model/face_mask_detection.caffemodel.png)
   
+- Facial landmarks are used to localize and represent salient regions of the face, such as:
+Eyes Eyebrows Nose Mouth Jawline 
+![Face](/extras/facial_landmark.jpg)
+
+
 The model takes input in the form of a live videostream and processes it frame by frame using OpenCV in Python.
 
 
